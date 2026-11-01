@@ -82,8 +82,8 @@
               <span class="font-semibold text-slate-800">2026 - 2027</span>
             </div>
             <div>
-              <span class="text-slate-500 text-xs block">Evaluation Criteria</span>
-              <span class="font-semibold text-slate-800">Core (45/45/10) & Theory (100)</span>
+              <span class="text-slate-500 text-xs block">Passing Standards</span>
+              <span class="font-semibold text-slate-800">MCQ: 14 | IA/THY(10): 3 | Total: 30</span>
             </div>
           </div>
 
@@ -94,9 +94,9 @@
                 <thead>
                   <tr class="border-b border-slate-200 text-slate-500 text-xs">
                     <th class="py-2 font-semibold">Subject</th>
-                    <th class="py-2 text-center font-semibold">MCQ</th>
-                    <th class="py-2 text-center font-semibold">THY</th>
-                    <th class="py-2 text-center font-semibold">IA</th>
+                    <th class="py-2 text-center font-semibold">MCQ (45)</th>
+                    <th class="py-2 text-center font-semibold">THY (45)</th>
+                    <th class="py-2 text-center font-semibold">IA (10)</th>
                     <th class="py-2 text-center font-semibold">Total (100)</th>
                     <th class="py-2 text-right font-semibold">Status</th>
                   </tr>
@@ -122,7 +122,7 @@
 
           <div class="text-xs text-slate-500 bg-amber-50 p-3 rounded-lg border border-amber-200/60">
             <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
-            <strong>Passing Criteria:</strong> Non-zero marks in all assessment components for core subjects, and a minimum of 30 marks per subject.
+            <strong>Passing Criteria:</strong> MCQ pass mark = 14, IA/Theory(10) pass mark = 3, Total aggregate pass mark = 30 per subject.
           </div>
 
           <div class="flex justify-between items-center no-print">
@@ -147,17 +147,17 @@
             <i class="fa-solid fa-lock"></i>
           </div>
           <h2 class="text-xl font-bold text-slate-800">Admin Authentication</h2>
-          <p class="text-xs text-slate-500 mt-1">Enter credentials to manage student results.</p>
+          <p class="text-xs text-slate-500 mt-1">Enter secure credentials to manage student results.</p>
         </div>
 
         <form onsubmit="handleAdminLogin(event)" class="space-y-4">
           <div>
             <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">User ID</label>
-            <input type="text" id="adminUser" required placeholder="admin" class="w-full px-3 py-3 border border-slate-300 rounded-xl text-sm outline-none focus:border-amber-500">
+            <input type="text" id="adminUser" required autocomplete="off" class="w-full px-3 py-3 border border-slate-300 rounded-xl text-sm outline-none focus:border-amber-500">
           </div>
           <div>
             <label class="block text-xs font-semibold uppercase text-slate-600 mb-1">Password</label>
-            <input type="password" id="adminPass" required placeholder="dara123@" class="w-full px-3 py-3 border border-slate-300 rounded-xl text-sm outline-none focus:border-amber-500">
+            <input type="password" id="adminPass" required autocomplete="off" class="w-full px-3 py-3 border border-slate-300 rounded-xl text-sm outline-none focus:border-amber-500">
           </div>
           <p id="loginError" class="text-xs text-red-500 font-semibold hidden text-center">Invalid User ID or Password.</p>
           <button type="submit" class="w-full bg-slate-900 text-white font-semibold py-3 rounded-xl hover:bg-slate-800 transition shadow">
@@ -171,7 +171,7 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <div>
             <h2 class="text-xl font-bold text-slate-800">Admin Result Management Portal</h2>
-            <p class="text-xs text-slate-500">Manage Class IX & X records and bulk link generation.</p>
+            <p class="text-xs text-slate-500">Manage Class IX & X records with strict pass rules.</p>
           </div>
           <div class="flex flex-wrap gap-2 items-center">
             <button onclick="openModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
@@ -182,9 +182,6 @@
             </button>
             <button onclick="exportToPDF()" class="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
               <i class="fa-solid fa-file-pdf"></i> Export PDF
-            </button>
-            <button onclick="openBulkLinkModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2" title="Create Links for up to 50 results">
-              <i class="fa-solid fa-link"></i> Create Result Links (Up to 50)
             </button>
             <button onclick="adminLogout()" class="px-3 py-2 bg-red-100 text-red-600 hover:bg-red-200 text-sm font-semibold rounded-lg transition" title="Logout">
               <i class="fa-solid fa-right-from-bracket"></i>
@@ -254,54 +251,53 @@
         <div class="border-t pt-4 border-slate-200 space-y-4">
           <h4 class="text-xs font-bold uppercase text-slate-500">Subject Breakdown</h4>
           
-          <!-- English (45/45/10) -->
+          <!-- English -->
           <div class="bg-slate-50 p-3 rounded-xl border">
             <span class="block font-semibold text-xs text-slate-700 mb-2">English (MCQ:45 | THY:45 | IA:10)</span>
             <div class="grid grid-cols-3 gap-2">
-              <div><label class="block text-[10px] text-slate-500">MCQ</label><input type="number" id="eng_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">THY</label><input type="number" id="eng_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">IA</label><input type="number" id="eng_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">MCQ (Pass: 14)</label><input type="number" id="eng_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">THY (Pass: 3)</label><input type="number" id="eng_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">IA (Pass: 3)</label><input type="number" id="eng_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
             </div>
           </div>
 
-          <!-- Assamese (Theory Only 100) -->
+          <!-- Assamese -->
           <div class="bg-slate-50 p-3 rounded-xl border">
-            <span class="block font-semibold text-xs text-slate-700 mb-2">Assamese (Theory Only - Max 100)</span>
+            <span class="block font-semibold text-xs text-slate-700 mb-2">Assamese (Theory Only - Max 100, Pass: 30)</span>
             <div><input type="number" id="asm_thy" min="0" max="100" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
           </div>
 
-          <!-- General Mathematics (45/45/10) -->
+          <!-- General Mathematics -->
           <div class="bg-slate-50 p-3 rounded-xl border">
             <span class="block font-semibold text-xs text-slate-700 mb-2">General Mathematics (MCQ:45 | THY:45 | IA:10)</span>
             <div class="grid grid-cols-3 gap-2">
-              <div><label class="block text-[10px] text-slate-500">MCQ</label><input type="number" id="mat_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">THY</label><input type="number" id="mat_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">IA</label><input type="number" id="mat_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">MCQ (Pass: 14)</label><input type="number" id="mat_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">THY (Pass: 3)</label><input type="number" id="mat_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">IA (Pass: 3)</label><input type="number" id="mat_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
             </div>
           </div>
 
-          <!-- General Science (45/45/10) -->
+          <!-- General Science -->
           <div class="bg-slate-50 p-3 rounded-xl border">
             <span class="block font-semibold text-xs text-slate-700 mb-2">General Science (MCQ:45 | THY:45 | IA:10)</span>
             <div class="grid grid-cols-3 gap-2">
-              <div><label class="block text-[10px] text-slate-500">MCQ</label><input type="number" id="sci_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">THY</label><input type="number" id="sci_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">IA</label><input type="number" id="sci_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">MCQ (Pass: 14)</label><input type="number" id="sci_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">THY (Pass: 3)</label><input type="number" id="sci_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">IA (Pass: 3)</label><input type="number" id="sci_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
             </div>
           </div>
 
-          <!-- Social Science (45/45/10) -->
+          <!-- Social Science -->
           <div class="bg-slate-50 p-3 rounded-xl border">
             <span class="block font-semibold text-xs text-slate-700 mb-2">Social Science (MCQ:45 | THY:45 | IA:10)</span>
             <div class="grid grid-cols-3 gap-2">
-              <div><label class="block text-[10px] text-slate-500">MCQ</label><input type="number" id="soc_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">THY</label><input type="number" id="soc_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
-              <div><label class="block text-[10px] text-slate-500">IA</label><input type="number" id="soc_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">MCQ (Pass: 14)</label><input type="number" id="soc_mcq" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">THY (Pass: 3)</label><input type="number" id="soc_thy" min="0" max="45" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
+              <div><label class="block text-[10px] text-slate-500">IA (Pass: 3)</label><input type="number" id="soc_ia" min="0" max="10" required class="w-full px-2 py-1 border rounded text-sm bg-white"></div>
             </div>
           </div>
 
-          <!-- Elective Subject (Theory Only 100) -->
-          <!-- Elective Subject (Theory Only 100) -->
+          <!-- Elective Subject -->
           <div class="bg-slate-50 p-3 rounded-xl border">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-2">
               <div>
@@ -314,7 +310,7 @@
               </div>
             </div>
             <div>
-              <label class="block text-[10px] text-slate-500 mb-1">Theory Marks (Max 100)</label>
+              <label class="block text-[10px] text-slate-500 mb-1">Theory Marks (Max 100, Pass: 30)</label>
               <input type="number" id="ele_thy" min="0" max="100" required class="w-full px-2 py-1 border rounded text-sm bg-white">
             </div>
           </div>
@@ -326,37 +322,7 @@
           <button type="submit" class="px-4 py-2 text-sm bg-amber-500 text-slate-950 font-semibold rounded-lg hover:bg-amber-400">Save Record</button>
         </div>
       </form>
-    </div>
-  </div>
-
-  <!-- BULK LINK GENERATOR MODAL (Up to 50 Upcoming Results) -->
-  <div id="bulkLinkModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
-    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden max-h-[85vh] flex flex-col">
-      <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
-        <h3 class="font-bold text-lg">Generate Result Links (Up to 50 Upcoming Records)</h3>
-        <button onclick="closeBulkLinkModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
-      </div>
-      <div class="p-6 space-y-4 overflow-y-auto flex-grow">
-        <p class="text-xs text-slate-500">Select a student record below to instantly copy their direct result link, or generate placeholder URLs for upcoming students.</p>
-        
-        <div class="flex gap-2">
-          <select id="bulkRollSelect" class="w-full px-3 py-2 border rounded-lg text-sm bg-white outline-none focus:border-amber-500">
-            <!-- Populated via JS -->
-          </select>
-          <button onclick="copySelectedLink()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-500 whitespace-nowrap">Copy Link</button>
-        </div>
-
-        <div class="border-t pt-4">
-          <h4 class="text-xs font-bold uppercase text-slate-600 mb-2">Quick Upcoming Result Link Generator (Rolls 1001 to 1050)</h4>
-          <div class="bg-slate-50 p-3 rounded-xl border max-h-48 overflow-y-auto space-y-1 text-xs font-mono">
-            <div id="upcomingLinksContainer"></div>
-          </div>
-        </div>
-      </div>
-      <div class="p-4 bg-slate-100 border-t text-right">
-        <button type="button" onclick="closeBulkLinkModal()" class="px-4 py-2 text-sm bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-lg">Close</button>
-      </div>
-    </div>
+ </div>
   </div>
 
   <script>
@@ -389,7 +355,7 @@
 
     let students;
     try {
-      const saved = localStorage.getItem("halfYearlyResultsFinal");
+      const saved = localStorage.getItem("halfYearlyResultsStrictPass");
       students = saved ? JSON.parse(saved) : initialData;
       if (!Array.isArray(students) || students.length === 0) {
         students = initialData;
@@ -399,15 +365,22 @@
     }
 
     function saveData() {
-      localStorage.setItem("halfYearlyResultsFinal", JSON.stringify(students));
+      localStorage.setItem("halfYearlyResultsStrictPass", JSON.stringify(students));
     }
 
+    // Passing criteria: MCQ >= 14, THY/IA (out of 10 or 45) >= 3, Total >= 30
     function evaluateCoreSub(subObj) {
       const mcq = subObj.mcq || 0;
       const thy = subObj.thy || 0;
       const ia = subObj.ia || 0;
       const total = mcq + thy + ia;
-      const pass = (mcq > 0) && (thy > 0) && (ia > 0) && (total >= 30);
+
+      const mcqPass = mcq >= 14;
+      const thyPass = thy >= 3;
+      const iaPass = ia >= 3;
+      const totalPass = total >= 30;
+
+      const pass = mcqPass && thyPass && iaPass && totalPass;
       return { mcq, thy, ia, total, pass };
     }
 
@@ -438,7 +411,6 @@
       };
     }
 
-    // Auto-load direct link query param if present e.g. ?roll=1001
     window.addEventListener('DOMContentLoaded', () => {
       const urlParams = new URLSearchParams(window.location.search);
       const rollParam = urlParams.get('roll');
@@ -469,7 +441,7 @@
     }
 
     function checkAdminAuth() {
-      const isLogged = sessionStorage.getItem("adminLoggedInFinal") === "true";
+      const isLogged = sessionStorage.getItem("adminLoggedInStrict") === "true";
       const loginCard = document.getElementById("adminLoginCard");
       const dashboard = document.getElementById("adminDashboard");
 
@@ -489,8 +461,9 @@
       const pass = document.getElementById("adminPass").value.trim();
       const errorMsg = document.getElementById("loginError");
 
+      // Secure credentials: admin / dara123@
       if (user === "admin" && pass === "dara123@") {
-        sessionStorage.setItem("adminLoggedInFinal", "true");
+        sessionStorage.setItem("adminLoggedInStrict", "true");
         errorMsg.classList.add("hidden");
         document.getElementById("adminUser").value = "";
         document.getElementById("adminPass").value = "";
@@ -501,7 +474,7 @@
     }
 
     function adminLogout() {
-      sessionStorage.removeItem("adminLoggedInFinal");
+      sessionStorage.removeItem("adminLoggedInStrict");
       checkAdminAuth();
     }
 
@@ -605,46 +578,6 @@
       const link = window.location.origin + window.location.pathname + "?roll=" + currentSearchedRoll;
       navigator.clipboard.writeText(link).then(() => {
         alert("Direct link copied to clipboard!");
-      });
-    }
-
-    function openBulkLinkModal() {
-      const select = document.getElementById("bulkRollSelect");
-      select.innerHTML = "";
-      students.forEach(s => {
-        const opt = document.createElement("option");
-        opt.value = s.roll;
-        opt.innerText = `${s.className} | Roll: ${s.roll} - ${s.name}`;
-        select.appendChild(opt);
-      });
-
-      // Generate upcoming 50 result links (Rolls 1001 to 1050)
-      const container = document.getElementById("upcomingLinksContainer");
-      container.innerHTML = "";
-      for (let i = 1001; i <= 1050; i++) {
-        const link = window.location.origin + window.location.pathname + "?roll=" + i;
-        const div = document.createElement("div");
-        div.className = "flex justify-between items-center py-1 border-b border-slate-100";
-        div.innerHTML = `<span>Roll ${i}: <a href="${link}" target="_blank" class="text-blue-600 underline">${link}</a></span>`;
-        container.appendChild(div);
-      }
-
-      const modal = document.getElementById("bulkLinkModal");
-      modal.classList.remove("hidden");
-      modal.classList.add("flex");
-    }
-
-    function closeBulkLinkModal() {
-      const modal = document.getElementById("bulkLinkModal");
-      modal.classList.add("hidden");
-      modal.classList.remove("flex");
-    }
-
-    function copySelectedLink() {
-      const roll = document.getElementById("bulkRollSelect").value;
-      const link = window.location.origin + window.location.pathname + "?roll=" + roll;
-      navigator.clipboard.writeText(link).then(() => {
-        alert(`Result link for Roll ${roll} copied successfully!`);
       });
     }
 
