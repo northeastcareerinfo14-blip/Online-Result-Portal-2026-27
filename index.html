@@ -88,14 +88,14 @@
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold uppercase text-slate-500 mb-3 tracking-wider">Subject-wise Performance</h4>
+            <h4 class="text-xs font-semibold uppercase text-slate-500 mb-3 tracking-wider">Subject-wise Performance (MCQ:45 | THY:45 | IA:10)</h4>
             <div class="overflow-x-auto">
               <table class="w-full text-left text-sm border-collapse">
                 <thead>
                   <tr class="border-b border-slate-200 text-slate-500 text-xs">
                     <th class="py-2 font-semibold">Subject</th>
-                    <th class="py-2 text-center font-semibold">Max Marks</th>
-                    <th class="py-2 text-center font-semibold">Marks Obtained</th>
+                    <th class="py-2 text-center font-semibold">Breakdown (M + T + I)</th>
+                    <th class="py-2 text-center font-semibold">Total (100)</th>
                     <th class="py-2 text-right font-semibold">Status</th>
                   </tr>
                 </thead>
@@ -120,7 +120,7 @@
 
           <div class="text-xs text-slate-500 bg-amber-50 p-3 rounded-lg border border-amber-200/60">
             <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
-            <strong>Passing Criteria:</strong> Candidate must secure minimum passing marks in each subject (>=30 for Social Science with non-zero sections, >=30 for other subjects) and overall aggregate.
+            <strong>Passing Criteria:</strong> Candidate must secure non-zero marks in MCQ, THY, and IA individually with aggregate >=30 for core subjects, and >=30 for Elective.
           </div>
 
           <div class="text-right no-print">
@@ -166,7 +166,7 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
           <div>
             <h2 class="text-xl font-bold text-slate-800">Admin Result Management Portal</h2>
-            <p class="text-xs text-slate-500">Manage multi-subject records for Class X.</p>
+            <p class="text-xs text-slate-500">Manage 6-subject records for Class X (MCQ:45, THY:45, IA:10 + Elective 100).</p>
           </div>
           <div class="flex flex-wrap gap-2 items-center">
             <button onclick="openModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
@@ -189,12 +189,12 @@
                 <tr>
                   <th class="py-3 px-4 font-semibold">Roll No</th>
                   <th class="py-3 px-4 font-semibold">Student Name</th>
-                  <th class="py-3 px-4 font-semibold text-center">English (100)</th>
-                  <th class="py-3 px-4 font-semibold text-center">Assamese (100)</th>
-                  <th class="py-3 px-4 font-semibold text-center">Mathematics (100)</th>
-                  <th class="py-3 px-4 font-semibold text-center">Science (100)</th>
-                  <th class="py-3 px-4 font-semibold text-center">Social Science (100)</th>
-                  <th class="py-3 px-4 font-semibold text-center">Optional (100)</th>
+                  <th class="py-3 px-4 font-semibold text-center">Gen. Math</th>
+                  <th class="py-3 px-4 font-semibold text-center">Gen. Science</th>
+                  <th class="py-3 px-4 font-semibold text-center">English</th>
+                  <th class="py-3 px-4 font-semibold text-center">Social Science</th>
+                  <th class="py-3 px-4 font-semibold text-center">Assamese</th>
+                  <th class="py-3 px-4 font-semibold text-center">Elective (100)</th>
                   <th class="py-3 px-4 font-semibold text-center">Result</th>
                   <th class="py-3 px-4 font-semibold text-right">Actions</th>
                 </tr>
@@ -212,7 +212,7 @@
 
   <!-- MODAL FOR SINGLE ENTRY / EDIT -->
   <div id="entryModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50 overflow-y-auto">
-    <div class="bg-white w-full max-w-2xl rounded-2xl shadow-xl overflow-hidden my-8">
+    <div class="bg-white w-full max-w-3xl rounded-2xl shadow-xl overflow-hidden my-8">
       <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
         <h3 id="modalTitle" class="font-bold text-lg">Add Student Result</h3>
         <button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -229,62 +229,76 @@
           </div>
         </div>
 
-        <div class="border-t pt-4 border-slate-200">
-          <h4 class="text-xs font-bold uppercase text-slate-500 mb-3">Compulsory Subjects (Max 100 each)</h4>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">English</label>
-              <input type="number" id="modalEnglish" min="0" max="100" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+        <!-- 5 Core Subjects (MCQ 45, THY 45, IA 10) -->
+        <div class="border-t pt-4 border-slate-200 space-y-4">
+          <h4 class="text-xs font-bold uppercase text-slate-500">Core Subjects (MCQ:45 | THY:45 | IA:10)</h4>
+          
+          <!-- Helper function to generate subject inputs -->
+          <div id="coreSubjectsInputs" class="space-y-3">
+            <!-- Rendered dynamically or predefined -->
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <span class="text-xs font-bold text-slate-800 block mb-2">1. General Mathematics</span>
+              <div class="grid grid-cols-3 gap-2">
+                <div><label class="text-[10px] text-slate-500">MCQ (45)</label><input type="number" id="math_mcq" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">THY (45)</label><input type="number" id="math_thy" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">IA (10)</label><input type="number" id="math_ia" min="0" max="10" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">Assamese</label>
-              <input type="number" id="modalAssamese" min="0" max="100" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <span class="text-xs font-bold text-slate-800 block mb-2">2. General Science</span>
+              <div class="grid grid-cols-3 gap-2">
+                <div><label class="text-[10px] text-slate-500">MCQ (45)</label><input type="number" id="sci_mcq" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">THY (45)</label><input type="number" id="sci_thy" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">IA (10)</label><input type="number" id="sci_ia" min="0" max="10" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">General Mathematics</label>
-              <input type="number" id="modalMath" min="0" max="100" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <span class="text-xs font-bold text-slate-800 block mb-2">3. English</span>
+              <div class="grid grid-cols-3 gap-2">
+                <div><label class="text-[10px] text-slate-500">MCQ (45)</label><input type="number" id="eng_mcq" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">THY (45)</label><input type="number" id="eng_thy" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">IA (10)</label><input type="number" id="eng_ia" min="0" max="10" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+              </div>
             </div>
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">General Science</label>
-              <input type="number" id="modalScience" min="0" max="100" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <span class="text-xs font-bold text-slate-800 block mb-2">4. Social Science</span>
+              <div class="grid grid-cols-3 gap-2">
+                <div><label class="text-[10px] text-slate-500">MCQ (45)</label><input type="number" id="soc_mcq" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">THY (45)</label><input type="number" id="soc_thy" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">IA (10)</label><input type="number" id="soc_ia" min="0" max="10" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+              <span class="text-xs font-bold text-slate-800 block mb-2">5. Assamese</span>
+              <div class="grid grid-cols-3 gap-2">
+                <div><label class="text-[10px] text-slate-500">MCQ (45)</label><input type="number" id="ass_mcq" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">THY (45)</label><input type="number" id="ass_thy" min="0" max="45" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+                <div><label class="text-[10px] text-slate-500">IA (10)</label><input type="number" id="ass_ia" min="0" max="10" required class="w-full px-2 py-1.5 border rounded text-sm"></div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Social Science Breakdown -->
+        <!-- Elective Subject (Hindi, Sanskrit, Arabic) -->
         <div class="border-t pt-4 border-slate-200">
-          <h4 class="text-xs font-bold uppercase text-slate-500 mb-3">Social Science Breakdown (Total 100)</h4>
-          <div class="grid grid-cols-3 gap-3">
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">MCQ (Max 45)</label>
-              <input type="number" id="modalSocMCQ" min="0" max="45" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
-            </div>
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">THY (Max 45)</label>
-              <input type="number" id="modalSocTHY" min="0" max="45" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
-            </div>
-            <div>
-              <label class="block text-xs text-slate-600 mb-1">IA (Max 10)</label>
-              <input type="number" id="modalSocIA" min="0" max="10" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
-            </div>
-          </div>
-        </div>
-
-        <!-- Optional Subject -->
-        <div class="border-t pt-4 border-slate-200">
-          <h4 class="text-xs font-bold uppercase text-slate-500 mb-3">Optional Subject (Hindi or Arabic)</h4>
+          <h4 class="text-xs font-bold uppercase text-slate-500 mb-3">Elective Subject (Choose one - Max 100 Marks)</h4>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-xs text-slate-600 mb-1">Select Subject</label>
-              <select id="modalOptSubject" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+              <label class="block text-xs text-slate-600 mb-1">Elective Subject</label>
+              <select id="modalElectiveName" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
                 <option value="None">None</option>
                 <option value="Hindi">Hindi</option>
+                <option value="Sanskrit">Sanskrit</option>
                 <option value="Arabic">Arabic</option>
               </select>
             </div>
             <div>
-              <label class="block text-xs text-slate-600 mb-1">Optional Marks (Max 100)</label>
-              <input type="number" id="modalOptMarks" min="0" max="100" value="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+              <label class="block text-xs text-slate-600 mb-1">Marks Obtained (Max 100)</label>
+              <input type="number" id="modalElectiveMarks" min="0" max="100" value="0" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
             </div>
           </div>
         </div>
@@ -302,47 +316,28 @@
       {
         roll: "1001",
         name: "Ankur Das",
-        english: 75,
-        assamese: 80,
-        math: 65,
-        science: 70,
-        socMcq: 40,
-        socThy: 38,
-        socIa: 9,
-        optSubject: "Hindi",
-        optMarks: 72
+        math: { mcq: 40, thy: 38, ia: 9 },
+        sci: { mcq: 42, thy: 40, ia: 10 },
+        eng: { mcq: 38, thy: 35, ia: 9 },
+        soc: { mcq: 40, thy: 38, ia: 9 },
+        ass: { mcq: 41, thy: 39, ia: 10 },
+        elective: { name: "Hindi", marks: 85 }
       },
       {
         roll: "1002",
         name: "Bishal Sharma",
-        english: 45,
-        assamese: 50,
-        math: 35,
-        science: 40,
-        socMcq: 25,
-        socThy: 20,
-        socIa: 7,
-        optSubject: "Arabic",
-        optMarks: 60
-      },
-      {
-        roll: "1003",
-        name: "Dipika Saikia",
-        english: 25, // Fail in English
-        assamese: 60,
-        math: 50,
-        science: 55,
-        socMcq: 30,
-        socThy: 25,
-        socIa: 8,
-        optSubject: "None",
-        optMarks: 0
+        math: { mcq: 20, thy: 15, ia: 5 },
+        sci: { mcq: 25, thy: 20, ia: 6 },
+        eng: { mcq: 22, thy: 18, ia: 6 },
+        soc: { mcq: 25, thy: 20, ia: 7 },
+        ass: { mcq: 28, thy: 22, ia: 7 },
+        elective: { name: "Arabic", marks: 55 }
       }
     ];
 
     let students;
     try {
-      const saved = localStorage.getItem("halfYearlyResultsMulti");
+      const saved = localStorage.getItem("halfYearlyResults6Sub");
       students = saved ? JSON.parse(saved) : initialData;
       if (!Array.isArray(students) || students.length === 0) {
         students = initialData;
@@ -352,40 +347,41 @@
     }
 
     function saveData() {
-      localStorage.setItem("halfYearlyResultsMulti", JSON.stringify(students));
+      localStorage.setItem("halfYearlyResults6Sub", JSON.stringify(students));
+    }
+
+    // Evaluation for a single subject with MCQ(45), THY(45), IA(10)
+    function evalSubject(sub) {
+      const total = (sub.mcq || 0) + (sub.thy || 0) + (sub.ia || 0);
+      const passed = (sub.mcq > 0) && (sub.thy > 0) && (sub.ia > 0) && (total >= 30);
+      return { total, passed };
     }
 
     function evaluateStudent(s) {
-      // Social Science evaluation
-      const socTotal = (s.socMcq || 0) + (s.socThy || 0) + (s.socIa || 0);
-      const socPass = (s.socMcq > 0) && (s.socThy > 0) && (s.socIa > 0) && (socTotal >= 30);
+      const mEval = evalSubject(s.math);
+      const sEval = evalSubject(s.sci);
+      const eEval = evalSubject(s.eng);
+      const socEval = evalSubject(s.soc);
+      const aEval = evalSubject(s.ass);
 
-      // Other subjects pass mark >= 30 out of 100
-      const engPass = (s.english >= 30);
-      const assPass = (s.assamese >= 30);
-      const mathPass = (s.math >= 30);
-      const sciPass = (s.science >= 30);
-
-      let optPass = true;
-      let optTotal = 0;
-      if (s.optSubject && s.optSubject !== "None") {
-        optTotal = s.optMarks || 0;
-        optPass = (optTotal >= 30);
+      let eleTotal = 0;
+      let elePassed = true;
+      if (s.elective && s.elective.name && s.elective.name !== "None") {
+        eleTotal = s.elective.marks || 0;
+        elePassed = (eleTotal >= 30);
       }
 
-      const grandTotal = (s.english || 0) + (s.assamese || 0) + (s.math || 0) + (s.science || 0) + socTotal + optTotal;
-      const overallPass = engPass && assPass && mathPass && sciPass && socPass && optPass;
+      const grandTotal = mEval.total + sEval.total + eEval.total + socEval.total + aEval.total + eleTotal;
+      const overallPass = mEval.passed && sEval.passed && eEval.passed && socEval.passed && aEval.passed && elePassed;
 
       return {
         ...s,
-        socTotal,
-        socPass,
-        engPass,
-        assPass,
-        mathPass,
-        sciPass,
-        optPass,
-        optTotal,
+        mTotal: mEval.total, mPass: mEval.passed,
+        sTotal: sEval.total, sPass: sEval.passed,
+        eTotal: eEval.total, ePass: eEval.passed,
+        socTotal: socEval.total, socPass: socEval.passed,
+        aTotal: aEval.total, aPass: aEval.passed,
+        eleTotal, elePassed,
         grandTotal,
         overallPass
       };
@@ -412,7 +408,7 @@
     }
 
     function checkAdminAuth() {
-      const isLogged = sessionStorage.getItem("adminLoggedInMulti") === "true";
+      const isLogged = sessionStorage.getItem("adminLoggedIn6Sub") === "true";
       const loginCard = document.getElementById("adminLoginCard");
       const dashboard = document.getElementById("adminDashboard");
 
@@ -433,7 +429,7 @@
       const errorMsg = document.getElementById("loginError");
 
       if (user === "admin" && pass === "dara123@") {
-        sessionStorage.setItem("adminLoggedInMulti", "true");
+        sessionStorage.setItem("adminLoggedIn6Sub", "true");
         errorMsg.classList.add("hidden");
         document.getElementById("adminUser").value = "";
         document.getElementById("adminPass").value = "";
@@ -444,7 +440,7 @@
     }
 
     function adminLogout() {
-      sessionStorage.removeItem("adminLoggedInMulti");
+      sessionStorage.removeItem("adminLoggedIn6Sub");
       checkAdminAuth();
     }
 
@@ -469,46 +465,46 @@
       const tbody = document.getElementById("resSubjectsBody");
       tbody.innerHTML = `
         <tr>
-          <td class="py-3 font-medium">English</td>
-          <td class="py-3 text-center">100</td>
-          <td class="py-3 text-center font-bold">${res.english}</td>
-          <td class="py-3 text-right text-xs font-semibold">${res.engPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
-        </tr>
-        <tr>
-          <td class="py-3 font-medium">Assamese</td>
-          <td class="py-3 text-center">100</td>
-          <td class="py-3 text-center font-bold">${res.assamese}</td>
-          <td class="py-3 text-right text-xs font-semibold">${res.assPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
-        </tr>
-        <tr>
           <td class="py-3 font-medium">General Mathematics</td>
-          <td class="py-3 text-center">100</td>
-          <td class="py-3 text-center font-bold">${res.math}</td>
-          <td class="py-3 text-right text-xs font-semibold">${res.mathPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
+          <td class="py-3 text-center">MCQ:${res.math.mcq} + THY:${res.math.thy} + IA:${res.math.ia}</td>
+          <td class="py-3 text-center font-bold">${res.mTotal}</td>
+          <td class="py-3 text-right text-xs font-semibold">${res.mPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
         </tr>
         <tr>
           <td class="py-3 font-medium">General Science</td>
-          <td class="py-3 text-center">100</td>
-          <td class="py-3 text-center font-bold">${res.science}</td>
-          <td class="py-3 text-right text-xs font-semibold">${res.sciPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
+          <td class="py-3 text-center">MCQ:${res.sci.mcq} + THY:${res.sci.thy} + IA:${res.sci.ia}</td>
+          <td class="py-3 text-center font-bold">${res.sTotal}</td>
+          <td class="py-3 text-right text-xs font-semibold">${res.sPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
         </tr>
         <tr>
-          <td class="py-3 font-medium">Social Science (MCQ:${res.socMcq} + THY:${res.socThy} + IA:${res.socIa})</td>
-          <td class="py-3 text-center">100</td>
+          <td class="py-3 font-medium">English</td>
+          <td class="py-3 text-center">MCQ:${res.eng.mcq} + THY:${res.eng.thy} + IA:${res.eng.ia}</td>
+          <td class="py-3 text-center font-bold">${res.eTotal}</td>
+          <td class="py-3 text-right text-xs font-semibold">${res.ePass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
+        </tr>
+        <tr>
+          <td class="py-3 font-medium">Social Science</td>
+          <td class="py-3 text-center">MCQ:${res.soc.mcq} + THY:${res.soc.thy} + IA:${res.soc.ia}</td>
           <td class="py-3 text-center font-bold">${res.socTotal}</td>
           <td class="py-3 text-right text-xs font-semibold">${res.socPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
         </tr>
-        ${res.optSubject && res.optSubject !== "None" ? `
         <tr>
-          <td class="py-3 font-medium">Optional: ${res.optSubject}</td>
-          <td class="py-3 text-center">100</td>
-          <td class="py-3 text-center font-bold">${res.optMarks}</td>
-          <td class="py-3 text-right text-xs font-semibold">${res.optPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
+          <td class="py-3 font-medium">Assamese</td>
+          <td class="py-3 text-center">MCQ:${res.ass.mcq} + THY:${res.ass.thy} + IA:${res.ass.ia}</td>
+          <td class="py-3 text-center font-bold">${res.aTotal}</td>
+          <td class="py-3 text-right text-xs font-semibold">${res.aPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
+        </tr>
+        ${res.elective && res.elective.name && res.elective.name !== "None" ? `
+        <tr>
+          <td class="py-3 font-medium">Elective: ${res.elective.name}</td>
+          <td class="py-3 text-center">Direct Marks (100)</td>
+          <td class="py-3 text-center font-bold">${res.eleTotal}</td>
+          <td class="py-3 text-right text-xs font-semibold">${res.elePassed ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>'}</td>
         </tr>
         ` : ''}
       `;
 
-      const maxPossible = res.optSubject && res.optSubject !== "None" ? 600 : 500;
+      const maxPossible = res.elective && res.elective.name && res.elective.name !== "None" ? 600 : 500;
       document.getElementById("resGrandTotalText").innerText = `${res.grandTotal} / ${maxPossible}`;
 
       const badge = document.getElementById("resStatusBadge");
@@ -540,12 +536,12 @@
         tr.innerHTML = `
           <td class="py-3 px-4 font-mono font-semibold">${res.roll}</td>
           <td class="py-3 px-4 font-medium">${res.name}</td>
-          <td class="py-3 px-4 text-center">${res.english}</td>
-          <td class="py-3 px-4 text-center">${res.assamese}</td>
-          <td class="py-3 px-4 text-center">${res.math}</td>
-          <td class="py-3 px-4 text-center">${res.science}</td>
+          <td class="py-3 px-4 text-center">${res.mTotal}</td>
+          <td class="py-3 px-4 text-center">${res.sTotal}</td>
+          <td class="py-3 px-4 text-center">${res.eTotal}</td>
           <td class="py-3 px-4 text-center">${res.socTotal}</td>
-          <td class="py-3 px-4 text-center">${res.optSubject && res.optSubject !== "None" ? res.optSubject + ' (' + res.optMarks + ')' : 'None'}</td>
+          <td class="py-3 px-4 text-center">${res.aTotal}</td>
+          <td class="py-3 px-4 text-center">${res.elective && res.elective.name && res.elective.name !== "None" ? res.elective.name + ' (' + res.eleTotal + ')' : 'None'}</td>
           <td class="py-3 px-4 text-center">
             <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full ${res.overallPass ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">
               ${res.overallPass ? 'PASS' : 'FAIL'}
@@ -578,29 +574,30 @@
         document.getElementById("modalRoll").value = target.roll;
         document.getElementById("modalRoll").disabled = true;
         document.getElementById("modalName").value = target.name;
-        document.getElementById("modalEnglish").value = target.english;
-        document.getElementById("modalAssamese").value = target.assamese;
-        document.getElementById("modalMath").value = target.math;
-        document.getElementById("modalScience").value = target.science;
-        document.getElementById("modalSocMCQ").value = target.socMcq;
-        document.getElementById("modalSocTHY").value = target.socThy;
-        document.getElementById("modalSocIA").value = target.socIa;
-        document.getElementById("modalOptSubject").value = target.optSubject || "None";
-        document.getElementById("modalOptMarks").value = target.optMarks || 0;
+
+        // Core fields
+        ['math', 'sci', 'eng', 'soc', 'ass'].forEach(sub => {
+          document.getElementById(sub + '_mcq').value = target[sub].mcq;
+          document.getElementById(sub + '_thy').value = target[sub].thy;
+          document.getElementById(sub + '_ia').value = target[sub].ia;
+        });
+
+        document.getElementById("modalElectiveName").value = target.elective ? target.elective.name : "None";
+        document.getElementById("modalElectiveMarks").value = target.elective ? target.elective.marks : 0;
       } else {
         title.innerText = "Add Student Result";
         document.getElementById("modalRoll").disabled = false;
         document.getElementById("modalRoll").value = "";
         document.getElementById("modalName").value = "";
-        document.getElementById("modalEnglish").value = 0;
-        document.getElementById("modalAssamese").value = 0;
-        document.getElementById("modalMath").value = 0;
-        document.getElementById("modalScience").value = 0;
-        document.getElementById("modalSocMCQ").value = 0;
-        document.getElementById("modalSocTHY").value = 0;
-        document.getElementById("modalSocIA").value = 0;
-        document.getElementById("modalOptSubject").value = "None";
-        document.getElementById("modalOptMarks").value = 0;
+
+        ['math', 'sci', 'eng', 'soc', 'ass'].forEach(sub => {
+          document.getElementById(sub + '_mcq').value = 0;
+          document.getElementById(sub + '_thy').value = 0;
+          document.getElementById(sub + '_ia').value = 0;
+        });
+
+        document.getElementById("modalElectiveName").value = "None";
+        document.getElementById("modalElectiveMarks").value = 0;
       }
       modal.classList.remove("hidden");
       modal.classList.add("flex");
@@ -616,17 +613,25 @@
       e.preventDefault();
       const roll = document.getElementById("modalRoll").value.trim();
       const name = document.getElementById("modalName").value.trim();
-      const english = parseInt(document.getElementById("modalEnglish").value) || 0;
-      const assamese = parseInt(document.getElementById("modalAssamese").value) || 0;
-      const math = parseInt(document.getElementById("modalMath").value) || 0;
-      const science = parseInt(document.getElementById("modalScience").value) || 0;
-      const socMcq = parseInt(document.getElementById("modalSocMCQ").value) || 0;
-      const socThy = parseInt(document.getElementById("modalSocTHY").value) || 0;
-      const socIa = parseInt(document.getElementById("modalSocIA").value) || 0;
-      const optSubject = document.getElementById("modalOptSubject").value;
-      const optMarks = parseInt(document.getElementById("modalOptMarks").value) || 0;
 
-      const record = { roll, name, english, assamese, math, science, socMcq, socThy, socIa, optSubject, optMarks };
+      const getSub = (prefix) => ({
+        mcq: parseInt(document.getElementById(prefix + '_mcq').value) || 0,
+        thy: parseInt(document.getElementById(prefix + '_thy').value) || 0,
+        ia: parseInt(document.getElementById(prefix + '_ia').value) || 0
+      });
+
+      const math = getSub('math');
+      const sci = getSub('sci');
+      const eng = getSub('eng');
+      const soc = getSub('soc');
+      const ass = getSub('ass');
+
+      const elective = {
+        name: document.getElementById("modalElectiveName").value,
+        marks: parseInt(document.getElementById("modalElectiveMarks").value) || 0
+      };
+
+      const record = { roll, name, math, sci, eng, soc, ass, elective };
       const existingIdx = students.findIndex(s => s.roll.toLowerCase() === roll.toLowerCase());
 
       if (editingRoll) {
