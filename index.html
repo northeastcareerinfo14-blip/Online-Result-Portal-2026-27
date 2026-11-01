@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,32 +13,27 @@
       .no-print { display: none !important; }
       .print-only { display: block !important; }
       body { background: white; color: black; }
-      #resultCard { box-shadow: none; border: 1px solid #e2e8f0; }
     }
   </style>
 </head>
-<body class="bg-slate-100 font-sans min-h-screen text-slate-800 flex flex-col justify-between selection:bg-amber-500 selection:text-slate-950">
+<body class="bg-slate-100 font-sans min-h-screen text-slate-800 flex flex-col">
 
   <!-- Header -->
   <header class="bg-slate-900 text-white shadow-md no-print">
     <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="flex items-center gap-3">
-        <div class="p-2.5 bg-amber-500/10 border border-amber-500/30 rounded-xl text-amber-400">
-          <i class="fa-solid fa-graduation-cap text-2xl"></i>
-        </div>
+        <i class="fa-solid font-bold text-2xl text-amber-400 fa-graduation-cap"></i>
         <div>
           <h1 class="text-xl font-bold leading-tight">Half Yearly Examination 2026-27</h1>
-          <p class="text-xs text-slate-400 font-medium">Class: <span class="text-slate-200">X</span> | Subject: <span class="text-slate-200">Social Science</span></p>
+          <p class="text-xs text-slate-400">Class: X | Subject: Social Science</p>
         </div>
       </div>
-      <div class="flex gap-2 bg-slate-800/80 p-1.5 rounded-xl border border-slate-700">
-        <button id="navStudentBtn" onclick="switchTab('student')" class="px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow transition flex items-center gap-2">
-          <i class="fa-solid fa-user-graduate"></i>
-          <span>Student Search</span>
+      <div class="flex gap-2">
+        <button id="navStudentBtn" onclick="switchTab('student')" class="px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition">
+          <i class="fa-solid fa-user-graduate mr-1"></i> Student Search
         </button>
-        <button id="navAdminBtn" onclick="switchTab('admin')" class="px-4 py-2 text-sm font-semibold rounded-lg text-slate-300 hover:text-white hover:bg-slate-700/60 transition flex items-center gap-2">
-          <i class="fa-solid fa-user-shield"></i>
-          <span>Admin Portal</span>
+        <button id="navAdminBtn" onclick="switchTab('admin')" class="px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition">
+          <i class="fa-solid fa-user-shield mr-1"></i> Admin Portal
         </button>
       </div>
     </div>
@@ -49,58 +43,42 @@
   <main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
 
     <!-- STUDENT SEARCH VIEW -->
-    <section id="studentView" class="space-y-6 max-w-3xl mx-auto">
-      <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 no-print transition-all">
-        <div class="text-center max-w-md mx-auto mb-6">
-          <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </div>
-          <h2 class="text-xl font-bold text-slate-800">Check Your Examination Result</h2>
-          <p class="text-xs text-slate-500 mt-1">Enter your Roll Number below to retrieve your Class X Social Science marksheet.</p>
-        </div>
+    <section id="studentView" class="space-y-6">
+      <div class="max-w-xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 no-print">
+        <h2 class="text-xl font-bold text-slate-800 text-center mb-2">Check Your Examination Result</h2>
+        <p class="text-xs text-slate-500 text-center mb-6">Enter your Roll Number below to retrieve your detailed marksheet.</p>
         
-        <form onsubmit="handleSearch(event)" class="max-w-md mx-auto space-y-4">
+        <form onsubmit="handleSearch(event)" class="space-y-4">
           <div>
-            <label for="searchRoll" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">Candidate Roll Number</label>
+            <label for="searchRoll" class="block text-xs font-semibold uppercase text-slate-600 mb-1">Roll Number</label>
             <div class="relative">
-              <input type="text" id="searchRoll" required placeholder="e.g. 1001, 1002..." class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-slate-800 font-semibold text-base transition bg-slate-50 focus:bg-white">
-              <i class="fa-solid fa-id-card absolute left-3.5 top-4 text-slate-400"></i>
+              <input type="text" id="searchRoll" required placeholder="e.g. 1001" class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-slate-800 font-medium transition">
+              <i class="fa-solid fa-id-card absolute left-3.5 top-3.5 text-slate-400"></i>
             </div>
           </div>
-          <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 active:bg-black text-white font-semibold py-3 rounded-xl transition shadow flex justify-center items-center gap-2 text-sm">
-            <span>View Result</span>
-            <i class="fa-solid fa-arrow-right text-xs"></i>
+          <button type="submit" class="w-full bg-slate-900 text-white font-semibold py-3 rounded-xl hover:bg-slate-800 transition shadow flex justify-center items-center gap-2">
+            <i class="fa-solid fa-magnifying-glass"></i> View Result
           </button>
         </form>
-
-        <div class="mt-6 pt-4 border-t border-slate-100 text-center text-xs text-slate-500 flex flex-wrap justify-center gap-3">
-          <span class="font-medium text-slate-600"><i class="fa-solid fa-circle-info text-amber-500 mr-1"></i> Pass Rule:</span>
-          <span class="bg-slate-100 px-2 py-0.5 rounded">MCQ &gt; 0</span>
-          <span class="bg-slate-100 px-2 py-0.5 rounded">THY &gt; 0</span>
-          <span class="bg-slate-100 px-2 py-0.5 rounded">IA &gt; 0</span>
-          <span class="bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded">Aggregate Total &ge; 30</span>
-        </div>
       </div>
 
-      <!-- Result Card (Initially Hidden) -->
-      <div id="resultCard" class="hidden bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
-        <!-- Card Header -->
+      <!-- Result Card -->
+      <div id="resultCard" class="hidden max-w-2xl mx-auto bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
         <div class="bg-slate-900 text-white p-6 border-b border-slate-800 flex justify-between items-start">
           <div>
-            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/20 text-amber-400 rounded-full inline-block mb-2 border border-amber-500/30">Half Yearly Exam 2026-27</span>
-            <h3 id="resName" class="text-2xl font-bold uppercase tracking-wide text-white">Candidate Name</h3>
+            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/20 text-amber-400 rounded-full inline-block mb-2">Half Yearly Exam 2026-27</span>
+            <h3 id="resName" class="text-2xl font-bold uppercase tracking-wide">Candidate Name</h3>
             <p id="resRoll" class="text-sm text-slate-400 font-mono mt-1">Roll No: --</p>
           </div>
           <div class="text-right">
-            <span id="resStatusBadge" class="px-3.5 py-1.5 text-xs font-black uppercase tracking-wider rounded-full bg-emerald-500 text-white shadow-sm inline-block">PASS</span>
+            <span id="resStatusBadge" class="px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-emerald-500 text-white shadow-sm">PASS</span>
           </div>
         </div>
 
-        <!-- Details & Marks -->
         <div class="p-6 space-y-6">
           <div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
             <div>
-              <span class="text-slate-500 text-xs block">Class & Subject</span>
+              <span class="text-slate-500 text-xs block">Class & Section</span>
               <span class="font-semibold text-slate-800">Class X (Social Science)</span>
             </div>
             <div>
@@ -110,58 +88,54 @@
           </div>
 
           <div>
-            <h4 class="text-xs font-bold uppercase text-slate-500 mb-3 tracking-wider">Score Breakdown</h4>
-            <div class="overflow-x-auto rounded-xl border border-slate-200">
+            <h4 class="text-xs font-semibold uppercase text-slate-500 mb-3 tracking-wider">Score Breakdown</h4>
+            <div class="overflow-x-auto">
               <table class="w-full text-left text-sm border-collapse">
                 <thead>
-                  <tr class="bg-slate-50 text-slate-600 text-xs font-bold uppercase border-b border-slate-200">
-                    <th class="py-3 px-4">Assessment Component</th>
-                    <th class="py-3 px-4 text-center">Max Marks</th>
-                    <th class="py-3 px-4 text-center">Marks Obtained</th>
-                    <th class="py-3 px-4 text-right">Section Status</th>
+                  <tr class="border-b border-slate-200 text-slate-500 text-xs">
+                    <th class="py-2 font-semibold">Assessment</th>
+                    <th class="py-2 text-center font-semibold">Max Marks</th>
+                    <th class="py-2 text-center font-semibold">Marks Obtained</th>
+                    <th class="py-2 text-right font-semibold">Status</th>
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 text-slate-700">
-                  <tr class="hover:bg-slate-50/50">
-                    <td class="py-3.5 px-4 font-medium">Multiple Choice Questions (MCQ)</td>
-                    <td class="py-3.5 px-4 text-center text-slate-500">45</td>
-                    <td id="resMCQ" class="py-3.5 px-4 text-center font-bold text-slate-900">--</td>
-                    <td id="resMCQStatus" class="py-3.5 px-4 text-right text-xs font-semibold">--</td>
+                  <tr>
+                    <td class="py-3 font-medium">Multiple Choice Questions (MCQ)</td>
+                    <td class="py-3 text-center">45</td>
+                    <td id="resMCQ" class="py-3 text-center font-bold">--</td>
+                    <td id="resMCQStatus" class="py-3 text-right text-xs font-semibold">--</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/50">
-                    <td class="py-3.5 px-4 font-medium">Theory Examination (THY)</td>
-                    <td class="py-3.5 px-4 text-center text-slate-500">45</td>
-                    <td id="resTHY" class="py-3.5 px-4 text-center font-bold text-slate-900">--</td>
-                    <td id="resTHYStatus" class="py-3.5 px-4 text-right text-xs font-semibold">--</td>
+                  <tr>
+                    <td class="py-3 font-medium">Theory Examination (THY)</td>
+                    <td class="py-3 text-center">45</td>
+                    <td id="resTHY" class="py-3 text-center font-bold">--</td>
+                    <td id="resTHYStatus" class="py-3 text-right text-xs font-semibold">--</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/50">
-                    <td class="py-3.5 px-4 font-medium">Internal Assessment (IA)</td>
-                    <td class="py-3.5 px-4 text-center text-slate-500">10</td>
-                    <td id="resIA" class="py-3.5 px-4 text-center font-bold text-slate-900">--</td>
-                    <td id="resIAStatus" class="py-3.5 px-4 text-right text-xs font-semibold">--</td>
+                  <tr>
+                    <td class="py-3 font-medium">Internal Assessment (IA)</td>
+                    <td class="py-3 text-center">10</td>
+                    <td id="resIA" class="py-3 text-center font-bold">--</td>
+                    <td id="resIAStatus" class="py-3 text-right text-xs font-semibold">--</td>
                   </tr>
-                  <tr class="bg-slate-900 text-white font-bold">
-                    <td class="py-3.5 px-4">Grand Total</td>
-                    <td class="py-3.5 px-4 text-center text-slate-300">100</td>
-                    <td id="resTotal" class="py-3.5 px-4 text-center text-lg text-amber-400">--</td>
-                    <td id="resOverallStatus" class="py-3.5 px-4 text-right text-sm">--</td>
+                  <tr class="bg-slate-50 font-bold text-slate-900">
+                    <td class="py-3 px-2">Grand Total</td>
+                    <td class="py-3 text-center">100</td>
+                    <td id="resTotal" class="py-3 text-center text-lg text-indigo-700">--</td>
+                    <td id="resOverallStatus" class="py-3 text-right text-sm">--</td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
 
-          <!-- Evaluation Remarks Box -->
-          <div id="resultRemarksBox" class="text-xs p-4 rounded-xl border flex items-start gap-3">
-            <!-- Dynamic Remark Content -->
+          <div class="text-xs text-slate-500 bg-amber-50 p-3 rounded-lg border border-amber-200/60">
+            <i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
+            <strong>Passing Criteria:</strong> Candidate must secure non-zero marks in MCQ, THY, and IA individually, and achieve a minimum aggregate total of 30 marks.
           </div>
 
-          <!-- Print & Actions -->
-          <div class="flex justify-between items-center pt-2 no-print">
-            <button onclick="clearSearch()" class="text-xs text-slate-500 hover:text-slate-800 font-semibold flex items-center gap-1.5 transition">
-              <i class="fa-solid fa-rotate-left"></i> Clear & Search Again
-            </button>
-            <button onclick="window.print()" class="px-4 py-2 text-xs bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl shadow transition inline-flex items-center gap-2">
+          <div class="text-right no-print">
+            <button onclick="window.print()" class="px-4 py-2 text-sm bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition inline-flex items-center gap-2">
               <i class="fa-solid fa-print"></i> Print Marksheet
             </button>
           </div>
@@ -171,55 +145,42 @@
 
     <!-- ADMIN PORTAL VIEW -->
     <section id="adminView" class="hidden space-y-6">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
         <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-2.5 py-0.5 rounded border border-amber-200">Admin Control</span>
-          <h2 class="text-xl font-bold text-slate-800 mt-1">Class X Result Portal Management</h2>
-          <p class="text-xs text-slate-500">Manage candidate records, single inputs, and CSV bulk data imports.</p>
+          <h2 class="text-xl font-bold text-slate-800">Admin Result Management Portal</h2>
+          <p class="text-xs text-slate-500">Add, edit, filter, or bulk upload student results.</p>
         </div>
-        <div class="flex flex-wrap items-center gap-2">
-          <button onclick="openModal()" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl transition shadow flex items-center gap-2">
+        <div class="flex flex-wrap gap-2">
+          <button onclick="openModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
             <i class="fa-solid fa-plus"></i> Single Entry
           </button>
-          <label class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-semibold rounded-xl transition shadow flex items-center gap-2 cursor-pointer">
+          <label class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2 cursor-pointer">
             <i class="fa-solid fa-file-csv"></i> Bulk CSV Import
             <input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleBulkCSV(event)">
           </label>
         </div>
       </div>
 
-      <!-- Data Table Container -->
       <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="p-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-4 bg-slate-50/50">
-          <div class="relative w-full sm:w-72">
-            <input type="text" id="adminSearch" onkeyup="filterAdminTable()" placeholder="Search Name or Roll No..." class="pl-9 pr-4 py-2 border border-slate-300 rounded-xl text-xs w-full outline-none focus:ring-2 focus:ring-amber-500 bg-white">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-slate-400 text-xs"></i>
-          </div>
-          <div class="flex items-center gap-4 text-xs">
-            <span id="recordCount" class="font-medium text-slate-500">0 Total Records</span>
-            <button onclick="resetData()" class="text-red-600 hover:text-red-800 font-semibold flex items-center gap-1 transition">
-              <i class="fa-solid fa-rotate-left"></i> Reset Sample Data
-            </button>
-          </div>
+        <div class="p-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between gap-4">
+          <input type="text" id="adminSearch" onkeyup="filterAdminTable()" placeholder="Search student name or roll..." class="px-3 py-2 border border-slate-300 rounded-lg text-sm w-full sm:w-64 outline-none focus:border-amber-500">
+          <button onclick="resetData()" class="text-xs text-red-500 hover:underline">Reset to Default Data</button>
         </div>
-
-        <!-- Table -->
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm border-collapse">
-            <thead class="bg-slate-100/70 text-slate-600 text-xs font-bold uppercase tracking-wider border-b border-slate-200">
+          <table class="w-full text-left text-sm">
+            <thead class="bg-slate-50 text-slate-500 text-xs uppercase border-b border-slate-200">
               <tr>
-                <th class="py-3 px-4">Roll No</th>
-                <th class="py-3 px-4">Candidate Name</th>
-                <th class="py-3 px-4 text-center">MCQ (45)</th>
-                <th class="py-3 px-4 text-center">THY (45)</th>
-                <th class="py-3 px-4 text-center">IA (10)</th>
-                <th class="py-3 px-4 text-center">Total (100)</th>
-                <th class="py-3 px-4 text-center">Result</th>
-                <th class="py-3 px-4 text-right">Actions</th>
+                <th class="py-3 px-4 font-semibold">Roll No</th>
+                <th class="py-3 px-4 font-semibold">Student Name</th>
+                <th class="py-3 px-4 font-semibold text-center">MCQ (45)</th>
+                <th class="py-3 px-4 font-semibold text-center">THY (45)</th>
+                <th class="py-3 px-4 font-semibold text-center">IA (10)</th>
+                <th class="py-3 px-4 font-semibold text-center">Total (100)</th>
+                <th class="py-3 px-4 font-semibold text-center">Result</th>
+                <th class="py-3 px-4 font-semibold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody id="adminTableBody" class="divide-y divide-slate-100 text-slate-700">
-              <!-- Dynamic Rows inserted via JS -->
+            <tbody id="adminTableBody" class="divide-y divide-slate-100">
             </tbody>
           </table>
         </div>
@@ -229,112 +190,77 @@
   </main>
 
   <!-- MODAL FOR SINGLE ENTRY / EDIT -->
-  <div id="entryModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
-    <div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform transition-all">
-      <div class="bg-slate-900 text-white p-4 px-6 flex justify-between items-center">
-        <h3 id="modalTitle" class="font-bold text-base">Add Candidate Result</h3>
-        <button onclick="closeModal()" class="text-slate-400 hover:text-white transition"><i class="fa-solid fa-xmark text-lg"></i></button>
+  <div id="entryModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+    <div class="bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden">
+      <div class="bg-slate-900 text-white p-4 flex justify-between items-center">
+        <h3 id="modalTitle" class="font-bold text-lg">Add Student Result</h3>
+        <button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
       <form onsubmit="saveStudent(event)" class="p-6 space-y-4">
         <div>
-          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Roll Number</label>
-          <input type="text" id="modalRoll" required placeholder="e.g. 1001" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-amber-500">
+          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Roll Number</label>
+          <input type="text" id="modalRoll" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
         </div>
         <div>
-          <label class="block text-xs font-bold uppercase text-slate-600 mb-1">Candidate Full Name</label>
-          <input type="text" id="modalName" required placeholder="e.g. Rahul Sharma" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-amber-500">
+          <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Candidate Name</label>
+          <input type="text" id="modalName" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
         </div>
         <div class="grid grid-cols-3 gap-3">
           <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">MCQ (Max 45)</label>
-            <input type="number" id="modalMCQ" min="0" max="45" required placeholder="0-45" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-amber-500">
+            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">MCQ (Max 45)</label>
+            <input type="number" id="modalMCQ" min="0" max="45" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">THY (Max 45)</label>
-            <input type="number" id="modalTHY" min="0" max="45" required placeholder="0-45" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-amber-500">
+            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">THY (Max 45)</label>
+            <input type="number" id="modalTHY" min="0" max="45" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
           </div>
           <div>
-            <label class="block text-xs font-bold uppercase text-slate-600 mb-1">IA (Max 10)</label>
-            <input type="number" id="modalIA" min="0" max="10" required placeholder="0-10" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-sm font-medium outline-none focus:ring-2 focus:ring-amber-500">
+            <label class="block text-xs font-semibold text-slate-600 uppercase mb-1">IA (Max 10)</label>
+            <input type="number" id="modalIA" min="0" max="10" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
           </div>
         </div>
-        
-        <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-800 space-y-1">
-          <p class="font-bold"><i class="fa-solid fa-circle-info mr-1"></i> Pass Logic Check:</p>
-          <p>• MCQ, THY, and IA marks must each be &gt; 0.</p>
-          <p>• Grand total must be &ge; 30 marks.</p>
-        </div>
-
-        <div class="pt-2 flex justify-end gap-2 border-t border-slate-100">
-          <button type="button" onclick="closeModal()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-xl transition">Cancel</button>
-          <button type="submit" class="px-4 py-2 text-xs bg-slate-900 hover:bg-slate-800 text-white font-semibold rounded-xl shadow transition">Save Record</button>
+        <div class="pt-4 flex justify-end gap-2">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="submit" class="px-4 py-2 text-sm bg-amber-500 text-slate-950 font-semibold rounded-lg hover:bg-amber-400">Save Record</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 text-xs py-4 border-t border-slate-800 no-print">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <p>&copy; 2026 Board of Secondary Education. Class X Social Science Examination Portal.</p>
-    </div>
-  </footer>
-
   <script>
-    // Sample Fallback Dataset
     const initialData = [
       { roll: "1001", name: "Ankur Das", mcq: 40, thy: 38, ia: 9 },
       { roll: "1002", name: "Bishal Sharma", mcq: 25, thy: 20, ia: 7 },
       { roll: "1003", name: "Dipika Saikia", mcq: 12, thy: 10, ia: 5 },
-      { roll: "1004", name: "Rahul Bora", mcq: 0, thy: 25, ia: 8 }, // Fails due to 0 MCQ
-      { roll: "1005", name: "Sanya Roy", mcq: 10, thy: 12, ia: 5 }   // Fails due to aggregate total < 30 (27 total)
+      { roll: "1004", name: "Rahul Bora", mcq: 0, thy: 25, ia: 8 }
     ];
 
-    // Safe Data Initialization from LocalStorage
     let students;
     try {
       const saved = localStorage.getItem("halfYearlyResults");
       students = saved ? JSON.parse(saved) : initialData;
       if (!Array.isArray(students) || students.length === 0) {
-        students = [...initialData];
+        students = initialData;
       }
     } catch (e) {
-      students = [...initialData];
+      students = initialData;
     }
 
     function saveData() {
       localStorage.setItem("halfYearlyResults", JSON.stringify(students));
     }
 
-    // Comprehensive Evaluation Rules Engine
     function evaluateStudent(s) {
-      const mcq = parseInt(s.mcq) || 0;
-      const thy = parseInt(s.thy) || 0;
-      const ia = parseInt(s.ia) || 0;
-      
-      const mcqPass = mcq > 0;
-      const thyPass = thy > 0;
-      const iaPass = ia > 0;
-      const total = mcq + thy + ia;
+      const mcqPass = s.mcq > 0;
+      const thyPass = s.thy > 0;
+      const iaPass = s.ia > 0;
+      const total = s.mcq + s.thy + s.ia;
       const aggregatePass = total >= 30;
-      
       const overallPass = mcqPass && thyPass && iaPass && aggregatePass;
 
-      return {
-        ...s,
-        mcq,
-        thy,
-        ia,
-        total,
-        mcqPass,
-        thyPass,
-        iaPass,
-        aggregatePass,
-        overallPass
-      };
+      return { ...s, total, mcqPass, thyPass, iaPass, aggregatePass, overallPass };
     }
 
-    // Navigation Tab Controller
     function switchTab(tab) {
       const studentView = document.getElementById("studentView");
       const adminView = document.getElementById("adminView");
@@ -344,19 +270,173 @@
       if (tab === "student") {
         studentView.classList.remove("hidden");
         adminView.classList.add("hidden");
-        navStudentBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow transition flex items-center gap-2";
-        navAdminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg text-slate-300 hover:text-white hover:bg-slate-700/60 transition flex items-center gap-2";
+        navStudentBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition";
+        navAdminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition";
       } else {
         studentView.classList.add("hidden");
         adminView.classList.remove("hidden");
-        navAdminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow transition flex items-center gap-2";
-        navStudentBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg text-slate-300 hover:text-white hover:bg-slate-700/60 transition flex items-center gap-2";
+        navAdminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition";
+        navStudentBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition";
         renderAdminTable();
       }
     }
 
-    // Student View Search Handler
     function handleSearch(e) {
       e.preventDefault();
       const rollInput = document.getElementById("searchRoll").value.trim();
-      const rawStudent = students.find(s => String(s.roll).toLowerCase() === rollIn
+      const rawStudent = students.find(s => s.roll.toLowerCase() === rollInput.toLowerCase());
+      const resultCard = document.getElementById("resultCard");
+
+      if (!rawStudent) {
+        alert("No candidate record found for Roll No: " + rollInput);
+        resultCard.classList.add("hidden");
+        return;
+      }
+
+      const res = evaluateStudent(rawStudent);
+
+      document.getElementById("resName").innerText = res.name;
+      document.getElementById("resRoll").innerText = "Roll No: " + res.roll;
+      document.getElementById("resMCQ").innerText = res.mcq;
+      document.getElementById("resTHY").innerText = res.thy;
+      document.getElementById("resIA").innerText = res.ia;
+      document.getElementById("resTotal").innerText = res.total;
+
+      document.getElementById("resMCQStatus").innerHTML = res.mcqPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>';
+      document.getElementById("resTHYStatus").innerHTML = res.thyPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>';
+      document.getElementById("resIAStatus").innerHTML = res.iaPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>';
+
+      const badge = document.getElementById("resStatusBadge");
+      const overallStatusCell = document.getElementById("resOverallStatus");
+
+      if (res.overallPass) {
+        badge.className = "px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-emerald-500 text-white shadow-sm";
+        badge.innerText = "PASS";
+        overallStatusCell.innerHTML = '<span class="text-emerald-600 font-bold">QUALIFIED</span>';
+      } else {
+        badge.className = "px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-red-500 text-white shadow-sm";
+        badge.innerText = "FAIL";
+        overallStatusCell.innerHTML = '<span class="text-red-500 font-bold">NEEDS IMPROVEMENT</span>';
+      }
+
+      resultCard.classList.remove("hidden");
+    }
+
+    function filterAdminTable() {
+      const q = document.getElementById("adminSearch").value.toLowerCase();
+      const filtered = students.filter(s => s.name.toLowerCase().includes(q) || s.roll.toLowerCase().includes(q));
+      renderAdminTable(filtered);
+    }
+
+    let editingRoll = null;
+    function openModal(roll = null) {
+      editingRoll = roll;
+      const modal = document.getElementById("entryModal");
+      const title = document.getElementById("modalTitle");
+
+      if (roll) {
+        title.innerText = "Edit Student Result";
+        const target = students.find(s => s.roll === roll);
+        document.getElementById("modalRoll").value = target.roll;
+        document.getElementById("modalRoll").disabled = true;
+        document.getElementById("modalName").value = target.name;
+        document.getElementById("modalMCQ").value = target.mcq;
+        document.getElementById("modalTHY").value = target.thy;
+        document.getElementById("modalIA").value = target.ia;
+      } else {
+        title.innerText = "Add Student Result";
+        document.getElementById("modalRoll").disabled = false;
+        document.getElementById("modalRoll").value = "";
+        document.getElementById("modalName").value = "";
+        document.getElementById("modalMCQ").value = 0;
+        document.getElementById("modalTHY").value = 0;
+        document.getElementById("modalIA").value = 0;
+      }
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+    }
+
+    function closeModal() {
+      const modal = document.getElementById("entryModal");
+      modal.classList.add("hidden");
+      modal.classList.remove("flex");
+    }
+
+    function saveStudent(e) {
+      e.preventDefault();
+      const roll = document.getElementById("modalRoll").value.trim();
+      const name = document.getElementById("modalName").value.trim();
+      const mcq = parseInt(document.getElementById("modalMCQ").value) || 0;
+      const thy = parseInt(document.getElementById("modalTHY").value) || 0;
+      const ia = parseInt(document.getElementById("modalIA").value) || 0;
+
+      if (editingRoll) {
+        const idx = students.findIndex(s => s.roll === editingRoll);
+        if (idx !== -1) students[idx] = { roll, name, mcq, thy, ia };
+      } else {
+        if (students.some(s => s.roll === roll)) {
+          alert("A student with this Roll Number already exists!");
+          return;
+        }
+        students.push({ roll, name, mcq, thy, ia });
+      }
+
+      saveData();
+      renderAdminTable();
+      closeModal();
+    }
+
+    function editStudent(roll) {
+      openModal(roll);
+    }
+
+    function deleteStudent(roll) {
+      if (confirm(`Are you sure you want to delete result for Roll ${roll}?`)) {
+        students = students.filter(s => s.roll !== roll);
+        saveData();
+        renderAdminTable();
+      }
+    }
+
+    function handleBulkCSV(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        const text = evt.target.result;
+        const lines = text.split("\n");
+        let count = 0;
+
+        lines.forEach((line, index) => {
+          if (index === 0 && line.toLowerCase().includes("roll")) return;
+          const parts = line.split(",").map(p => p.trim());
+          if (parts.length >= 5) {
+            const [roll, name, mcq, thy, ia] = parts;
+            if (roll && name) {
+              const existingIdx = students.findIndex(s => s.roll === roll);
+              const rec = { roll, name, mcq: parseInt(mcq)||0, thy: parseInt(thy)||0, ia: parseInt(ia)||0 };
+              if (existingIdx !== -1) students[existingIdx] = rec;
+              else students.push(rec);
+              count++;
+            }
+          }
+        });
+
+        saveData();
+        renderAdminTable();
+        alert(`Successfully imported/updated ${count} records.`);
+      };
+      reader.readAsText(file);
+    }
+
+    function resetData() {
+      if (confirm("Reset dataset back to original sample records?")) {
+        students = [...initialData];
+        saveData();
+        renderAdminTable();
+      }
+    }
+  </script>
+</body>
+</html>
