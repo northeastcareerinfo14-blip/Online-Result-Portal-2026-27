@@ -440,29 +440,3 @@
   </script>
 </body>
 </html>
-    function saveStudent(e) {
-      e.preventDefault();
-      const roll = document.getElementById("modalRoll").value.trim();
-      const name = document.getElementById("modalName").value.trim();
-      const mcq = parseInt(document.getElementById("modalMCQ").value) || 0;
-      const thy = parseInt(document.getElementById("modalTHY").value) || 0;
-      const ia = parseInt(document.getElementById("modalIA").value) || 0;
-
-      const existingIdx = students.findIndex(s => s.roll.toLowerCase() === roll.toLowerCase());
-
-      if (editingRoll) {
-        // Editing existing row from modal edit button
-        const idx = students.findIndex(s => s.roll === editingRoll);
-        if (idx !== -1) students[idx] = { roll, name, mcq, thy, ia };
-      } else if (existingIdx !== -1) {
-        // Roll already exists: update automatically
-        students[existingIdx] = { roll, name, mcq, thy, ia };
-      } else {
-        // Brand new student
-        students.push({ roll, name, mcq, thy, ia });
-      }
-
-      saveData();
-      renderAdminTable();
-      closeModal();
-    }
