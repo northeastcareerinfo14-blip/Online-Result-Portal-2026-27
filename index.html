@@ -1,1 +1,426 @@
-<html><head><meta content="text/html; charset=UTF-8" http-equiv="content-type"></head><body class="doc-content" style="background-color:#ffffff;max-width:468pt;padding:72pt 72pt 72pt 72pt"><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!DOCTYPE html&gt; &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt; &lt;title&gt;Half Yearly Examination 2026-27 - Social Science Class X&lt;/title&gt; &lt;!-- Tailwind CSS CDN --&gt; &lt;script src=&quot;https://cdn.tailwindcss.com&quot;&gt;&lt;/script&gt; &lt;!-- FontAwesome Icons --&gt; &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css&quot;&gt; &lt;style&gt; @media print { .no-print { display: none !important; } .print-only { display: block !important; } body { background: white; color: black; } } &lt;/style&gt; &lt;/head&gt; &lt;body class=&quot;bg-slate-100 font-sans min-h-screen text-slate-800 flex flex-col&quot;&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Header --&gt; &lt;header class=&quot;bg-slate-900 text-white shadow-md no-print&quot;&gt; &lt;div class=&quot;max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4&quot;&gt; &lt;div class=&quot;flex items-center gap-3&quot;&gt; &lt;i class=&quot;fa-solid font-bold text-2xl text-amber-400 fa-graduation-cap&quot;&gt;&lt;/i&gt; &lt;div&gt; &lt;h1 class=&quot;text-xl font-bold leading-tight&quot;&gt;Half Yearly Examination 2026-27&lt;/h1&gt; &lt;p class=&quot;text-xs text-slate-400&quot;&gt;Class: X | Subject: Social Science&lt;/p&gt; &lt;/div&gt; &lt;/div&gt; &lt;div class=&quot;flex gap-2&quot;&gt; &lt;button id=&quot;navStudentBtn&quot; onclick=&quot;switchTab(&#39;student&#39;)&quot; class=&quot;px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition&quot;&gt; &lt;i class=&quot;fa-solid fa-user-graduate mr-1&quot;&gt;&lt;/i&gt; Student Search &lt;/button&gt; &lt;button id=&quot;navAdminBtn&quot; onclick=&quot;switchTab(&#39;admin&#39;)&quot; class=&quot;px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition&quot;&gt; &lt;i class=&quot;fa-solid fa-user-shield mr-1&quot;&gt;&lt;/i&gt; Admin Portal &lt;/button&gt; &lt;/div&gt; &lt;/div&gt; &lt;/header&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Main Content Container --&gt; &lt;main class=&quot;max-w-6xl mx-auto px-4 py-8 flex-grow w-full&quot;&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- STUDENT SEARCH VIEW --&gt; &lt;section id=&quot;studentView&quot; class=&quot;space-y-6&quot;&gt; &lt;div class=&quot;max-w-xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 no-print&quot;&gt; &lt;h2 class=&quot;text-xl font-bold text-slate-800 text-center mb-2&quot;&gt;Check Your Examination Result&lt;/h2&gt; &lt;p class=&quot;text-xs text-slate-500 text-center mb-6&quot;&gt;Enter your Roll Number below to retrieve your detailed marksheet.&lt;/p&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;form onsubmit=&quot;handleSearch(event)&quot; class=&quot;space-y-4&quot;&gt; &lt;div&gt; &lt;label for=&quot;searchRoll&quot; class=&quot;block text-xs font-semibold uppercase text-slate-600 mb-1&quot;&gt;Roll Number&lt;/label&gt; &lt;div class=&quot;relative&quot;&gt; &lt;input type=&quot;text&quot; id=&quot;searchRoll&quot; required placeholder=&quot;e.g. 1001&quot; class=&quot;w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-slate-800 font-medium transition&quot;&gt; &lt;i class=&quot;fa-solid fa-id-card absolute left-3.5 top-3.5 text-slate-400&quot;&gt;&lt;/i&gt; &lt;/div&gt; &lt;/div&gt; &lt;button type=&quot;submit&quot; class=&quot;w-full bg-slate-900 text-white font-semibold py-3 rounded-xl hover:bg-slate-800 transition shadow flex justify-center items-center gap-2&quot;&gt; &lt;i class=&quot;fa-solid fa-magnifying-glass&quot;&gt;&lt;/i&gt; View Result &lt;/button&gt; &lt;/form&gt; &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Result Card --&gt; &lt;div id=&quot;resultCard&quot; class=&quot;hidden max-w-2xl mx-auto bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden&quot;&gt; &lt;!-- Card Header --&gt; &lt;div class=&quot;bg-slate-900 text-white p-6 border-b border-slate-800 flex justify-between items-start&quot;&gt; &lt;div&gt; &lt;span class=&quot;text-xs font-semibold px-2.5 py-1 bg-amber-500/20 text-amber-400 rounded-full inline-block mb-2&quot;&gt;Half Yearly Exam 2026-27&lt;/span&gt; &lt;h3 id=&quot;resName&quot; class=&quot;text-2xl font-bold uppercase tracking-wide&quot;&gt;Candidate Name&lt;/h3&gt; &lt;p id=&quot;resRoll&quot; class=&quot;text-sm text-slate-400 font-mono mt-1&quot;&gt;Roll No: --&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;text-right&quot;&gt; &lt;span id=&quot;resStatusBadge&quot; class=&quot;px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-emerald-500 text-white shadow-sm&quot;&gt;PASS&lt;/span&gt; &lt;/div&gt; &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Details &amp; Marks --&gt; &lt;div class=&quot;p-6 space-y-6&quot;&gt; &lt;div class=&quot;grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100&quot;&gt; &lt;div&gt; &lt;span class=&quot;text-slate-500 text-xs block&quot;&gt;Class &amp; Section&lt;/span&gt; &lt;span class=&quot;font-semibold text-slate-800&quot;&gt;Class X (Social Science)&lt;/span&gt; &lt;/div&gt; &lt;div&gt; &lt;span class=&quot;text-slate-500 text-xs block&quot;&gt;Academic Year&lt;/span&gt; &lt;span class=&quot;font-semibold text-slate-800&quot;&gt;2026 - 2027&lt;/span&gt; &lt;/div&gt; &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;div&gt; &lt;h4 class=&quot;text-xs font-semibold uppercase text-slate-500 mb-3 tracking-wider&quot;&gt;Score Breakdown&lt;/h4&gt; &lt;div class=&quot;overflow-x-auto&quot;&gt; &lt;table class=&quot;w-full text-left text-sm border-collapse&quot;&gt; &lt;thead&gt; &lt;tr class=&quot;border-b border-slate-200 text-slate-500 text-xs&quot;&gt; &lt;th class=&quot;py-2 font-semibold&quot;&gt;Assessment&lt;/th&gt; &lt;th class=&quot;py-2 text-center font-semibold&quot;&gt;Max Marks&lt;/th&gt; &lt;th class=&quot;py-2 text-center font-semibold&quot;&gt;Marks Obtained&lt;/th&gt; &lt;th class=&quot;py-2 text-right font-semibold&quot;&gt;Status&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody class=&quot;divide-y divide-slate-100 text-slate-700&quot;&gt; &lt;tr&gt; &lt;td class=&quot;py-3 font-medium&quot;&gt;Multiple Choice Questions (MCQ)&lt;/td&gt; &lt;td class=&quot;py-3 text-center&quot;&gt;45&lt;/td&gt; &lt;td id=&quot;resMCQ&quot; class=&quot;py-3 text-center font-bold&quot;&gt;--&lt;/td&gt; &lt;td id=&quot;resMCQStatus&quot; class=&quot;py-3 text-right text-xs font-semibold&quot;&gt;--&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td class=&quot;py-3 font-medium&quot;&gt;Theory Examination (THY)&lt;/td&gt; &lt;td class=&quot;py-3 text-center&quot;&gt;45&lt;/td&gt; &lt;td id=&quot;resTHY&quot; class=&quot;py-3 text-center font-bold&quot;&gt;--&lt;/td&gt; &lt;td id=&quot;resTHYStatus&quot; class=&quot;py-3 text-right text-xs font-semibold&quot;&gt;--&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td class=&quot;py-3 font-medium&quot;&gt;Internal Assessment (IA)&lt;/td&gt; &lt;td class=&quot;py-3 text-center&quot;&gt;10&lt;/td&gt; &lt;td id=&quot;resIA&quot; class=&quot;py-3 text-center font-bold&quot;&gt;--&lt;/td&gt; &lt;td id=&quot;resIAStatus&quot; class=&quot;py-3 text-right text-xs font-semibold&quot;&gt;--&lt;/td&gt; &lt;/tr&gt; &lt;tr class=&quot;bg-slate-50 font-bold text-slate-900&quot;&gt; &lt;td class=&quot;py-3 px-2&quot;&gt;Grand Total&lt;/td&gt; &lt;td class=&quot;py-3 text-center&quot;&gt;100&lt;/td&gt; &lt;td id=&quot;resTotal&quot; class=&quot;py-3 text-center text-lg text-indigo-700&quot;&gt;--&lt;/td&gt; &lt;td id=&quot;resOverallStatus&quot; class=&quot;py-3 text-right text-sm&quot;&gt;--&lt;/td&gt; &lt;/tr&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Rules Notice --&gt; &lt;div class=&quot;text-xs text-slate-500 bg-amber-50 p-3 rounded-lg border border-amber-200/60&quot;&gt; &lt;i class=&quot;fa-solid fa-triangle-exclamation text-amber-600 mr-1&quot;&gt;&lt;/i&gt; &lt;strong&gt;Passing Criteria:&lt;/strong&gt; Candidate must secure non-zero marks in MCQ, THY, and IA individually, and achieve a minimum aggregate total of 30 marks. &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Print Button --&gt; &lt;div class=&quot;text-right no-print&quot;&gt; &lt;button onclick=&quot;window.print()&quot; class=&quot;px-4 py-2 text-sm bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition inline-flex items-center gap-2&quot;&gt; &lt;i class=&quot;fa-solid fa-print&quot;&gt;&lt;/i&gt; Print Marksheet &lt;/button&gt; &lt;/div&gt; &lt;/div&gt; &lt;/div&gt; &lt;/section&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- ADMIN PORTAL VIEW --&gt; &lt;section id=&quot;adminView&quot; class=&quot;hidden space-y-6&quot;&gt; &lt;div class=&quot;flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200&quot;&gt; &lt;div&gt; &lt;h2 class=&quot;text-xl font-bold text-slate-800&quot;&gt;Admin Result Management Portal&lt;/h2&gt; &lt;p class=&quot;text-xs text-slate-500&quot;&gt;Add, edit, filter, or bulk upload student results.&lt;/p&gt; &lt;/div&gt; &lt;div class=&quot;flex flex-wrap gap-2&quot;&gt; &lt;button onclick=&quot;openModal()&quot; class=&quot;px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2&quot;&gt; &lt;i class=&quot;fa-solid fa-plus&quot;&gt;&lt;/i&gt; Single Entry &lt;/button&gt; &lt;label class=&quot;px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2 cursor-pointer&quot;&gt; &lt;i class=&quot;fa-solid fa-file-csv&quot;&gt;&lt;/i&gt; Bulk CSV Import &lt;input type=&quot;file&quot; id=&quot;csvFileInput&quot; accept=&quot;.csv&quot; class=&quot;hidden&quot; onchange=&quot;handleBulkCSV(event)&quot;&gt; &lt;/label&gt; &lt;/div&gt; &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- Data Table --&gt; &lt;div class=&quot;bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden&quot;&gt; &lt;div class=&quot;p-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between gap-4&quot;&gt; &lt;input type=&quot;text&quot; id=&quot;adminSearch&quot; onkeyup=&quot;filterAdminTable()&quot; placeholder=&quot;Search student name or roll...&quot; class=&quot;px-3 py-2 border border-slate-300 rounded-lg text-sm w-full sm:w-64 outline-none focus:border-amber-500&quot;&gt; &lt;button onclick=&quot;resetData()&quot; class=&quot;text-xs text-red-500 hover:underline&quot;&gt;Reset to Default Data&lt;/button&gt; &lt;/div&gt; &lt;div class=&quot;overflow-x-auto&quot;&gt; &lt;table class=&quot;w-full text-left text-sm&quot;&gt; &lt;thead class=&quot;bg-slate-50 text-slate-500 text-xs uppercase border-b border-slate-200&quot;&gt; &lt;tr&gt; &lt;th class=&quot;py-3 px-4 font-semibold&quot;&gt;Roll No&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold&quot;&gt;Student Name&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold text-center&quot;&gt;MCQ (45)&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold text-center&quot;&gt;THY (45)&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold text-center&quot;&gt;IA (10)&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold text-center&quot;&gt;Total (100)&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold text-center&quot;&gt;Result&lt;/th&gt; &lt;th class=&quot;py-3 px-4 font-semibold text-right&quot;&gt;Actions&lt;/th&gt; &lt;/tr&gt; &lt;/thead&gt; &lt;tbody id=&quot;adminTableBody&quot; class=&quot;divide-y divide-slate-100&quot;&gt; &lt;!-- Dynamic Rows inserted via JS --&gt; &lt;/tbody&gt; &lt;/table&gt; &lt;/div&gt; &lt;/div&gt; &lt;/section&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;/main&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;!-- MODAL FOR SINGLE ENTRY / EDIT --&gt; &lt;div id=&quot;entryModal&quot; class=&quot;fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50&quot;&gt; &lt;div class=&quot;bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden&quot;&gt; &lt;div class=&quot;bg-slate-900 text-white p-4 flex justify-between items-center&quot;&gt; &lt;h3 id=&quot;modalTitle&quot; class=&quot;font-bold text-lg&quot;&gt;Add Student Result&lt;/h3&gt; &lt;button onclick=&quot;closeModal()&quot; class=&quot;text-slate-400 hover:text-white&quot;&gt;&lt;i class=&quot;fa-solid fa-xmark text-lg&quot;&gt;&lt;/i&gt;&lt;/button&gt; &lt;/div&gt; &lt;form onsubmit=&quot;saveStudent(event)&quot; class=&quot;p-6 space-y-4&quot;&gt; &lt;div&gt; &lt;label class=&quot;block text-xs font-semibold text-slate-600 uppercase mb-1&quot;&gt;Roll Number&lt;/label&gt; &lt;input type=&quot;text&quot; id=&quot;modalRoll&quot; required class=&quot;w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500&quot;&gt; &lt;/div&gt; &lt;div&gt; &lt;label class=&quot;block text-xs font-semibold text-slate-600 uppercase mb-1&quot;&gt;Candidate Name&lt;/label&gt; &lt;input type=&quot;text&quot; id=&quot;modalName&quot; required class=&quot;w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500&quot;&gt; &lt;/div&gt; &lt;div class=&quot;grid grid-cols-3 gap-3&quot;&gt; &lt;div&gt; &lt;label class=&quot;block text-xs font-semibold text-slate-600 uppercase mb-1&quot;&gt;MCQ (Max 45)&lt;/label&gt; &lt;input type=&quot;number&quot; id=&quot;modalMCQ&quot; min=&quot;0&quot; max=&quot;45&quot; required class=&quot;w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500&quot;&gt; &lt;/div&gt; &lt;div&gt; &lt;label class=&quot;block text-xs font-semibold text-slate-600 uppercase mb-1&quot;&gt;THY (Max 45)&lt;/label&gt; &lt;input type=&quot;number&quot; id=&quot;modalTHY&quot; min=&quot;0&quot; max=&quot;45&quot; required class=&quot;w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500&quot;&gt; &lt;/div&gt; &lt;div&gt; &lt;label class=&quot;block text-xs font-semibold text-slate-600 uppercase mb-1&quot;&gt;IA (Max 10)&lt;/label&gt; &lt;input type=&quot;number&quot; id=&quot;modalIA&quot; min=&quot;0&quot; max=&quot;10&quot; required class=&quot;w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500&quot;&gt; &lt;/div&gt; &lt;/div&gt; &lt;div class=&quot;pt-4 flex justify-end gap-2&quot;&gt; &lt;button type=&quot;button&quot; onclick=&quot;closeModal()&quot; class=&quot;px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg&quot;&gt;Cancel&lt;/button&gt; &lt;button type=&quot;submit&quot; class=&quot;px-4 py-2 text-sm bg-amber-500 text-slate-950 font-semibold rounded-lg hover:bg-amber-400&quot;&gt;Save Record&lt;/button&gt; &lt;/div&gt; &lt;/form&gt; &lt;/div&gt; &lt;/div&gt;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">&lt;script&gt; // Initial Sample Dataset const initialData = [ { roll: &quot;1001&quot;, name: &quot;Ankur Das&quot;, mcq: 40, thy: 38, ia: 9 }, { roll: &quot;1002&quot;, name: &quot;Bishal Sharma&quot;, mcq: 25, thy: 20, ia: 7 }, { roll: &quot;1003&quot;, name: &quot;Dipika Saikia&quot;, mcq: 12, thy: 10, ia: 5 }, { roll: &quot;1004&quot;, name: &quot;Rahul Bora&quot;, mcq: 0, thy: 25, ia: 8 } ];</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Load from LocalStorage or initialize let students = JSON.parse(localStorage.getItem(&quot;halfYearlyResults&quot;)) || initialData;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">function saveData() { localStorage.setItem(&quot;halfYearlyResults&quot;, JSON.stringify(students)); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Evaluation Logic function evaluateStudent(s) { const mcqPass = s.mcq &gt; 0; const thyPass = s.thy &gt; 0; const iaPass = s.ia &gt; 0; const total = s.mcq + s.thy + s.ia; const aggregatePass = total &gt;= 30; const overallPass = mcqPass &amp;&amp; thyPass &amp;&amp; iaPass &amp;&amp; aggregatePass;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">return { ...s, total, mcqPass, thyPass, iaPass, aggregatePass, overallPass }; }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Navigation Switcher function switchTab(tab) { const studentView = document.getElementById(&quot;studentView&quot;); const adminView = document.getElementById(&quot;adminView&quot;); const navStudentBtn = document.getElementById(&quot;navStudentBtn&quot;); const navAdminBtn = document.getElementById(&quot;navAdminBtn&quot;);</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">if (tab === &quot;student&quot;) { studentView.classList.remove(&quot;hidden&quot;); adminView.classList.add(&quot;hidden&quot;); navStudentBtn.className = &quot;px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition&quot;; navAdminBtn.className = &quot;px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition&quot;; } else { studentView.classList.add(&quot;hidden&quot;); adminView.classList.remove(&quot;hidden&quot;); navAdminBtn.className = &quot;px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition&quot;; navStudentBtn.className = &quot;px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition&quot;; renderAdminTable(); } }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Student Search Handler function handleSearch(e) { e.preventDefault(); const rollInput = document.getElementById(&quot;searchRoll&quot;).value.trim(); const rawStudent = students.find(s =&gt; s.roll.toLowerCase() === rollInput.toLowerCase()); const resultCard = document.getElementById(&quot;resultCard&quot;);</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">if (!rawStudent) { alert(&quot;No candidate record found for Roll No: &quot; + rollInput); resultCard.classList.add(&quot;hidden&quot;); return; }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">const res = evaluateStudent(rawStudent);</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">document.getElementById(&quot;resName&quot;).innerText = res.name; document.getElementById(&quot;resRoll&quot;).innerText = &quot;Roll No: &quot; + res.roll; document.getElementById(&quot;resMCQ&quot;).innerText = res.mcq; document.getElementById(&quot;resTHY&quot;).innerText = res.thy; document.getElementById(&quot;resIA&quot;).innerText = res.ia; document.getElementById(&quot;resTotal&quot;).innerText = res.total;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Section Statuses document.getElementById(&quot;resMCQStatus&quot;).innerHTML = res.mcqPass ? &#39;&lt;span class=&quot;text-emerald-600&quot;&gt;PASSED&lt;/span&gt;&#39; : &#39;&lt;span class=&quot;text-red-500&quot;&gt;FAILED&lt;/span&gt;&#39;; document.getElementById(&quot;resTHYStatus&quot;).innerHTML = res.thyPass ? &#39;&lt;span class=&quot;text-emerald-600&quot;&gt;PASSED&lt;/span&gt;&#39; : &#39;&lt;span class=&quot;text-red-500&quot;&gt;FAILED&lt;/span&gt;&#39;; document.getElementById(&quot;resIAStatus&quot;).innerHTML = res.iaPass ? &#39;&lt;span class=&quot;text-emerald-600&quot;&gt;PASSED&lt;/span&gt;&#39; : &#39;&lt;span class=&quot;text-red-500&quot;&gt;FAILED&lt;/span&gt;&#39;;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">const badge = document.getElementById(&quot;resStatusBadge&quot;); const overallStatusCell = document.getElementById(&quot;resOverallStatus&quot;);</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">if (res.overallPass) { badge.className = &quot;px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-emerald-500 text-white shadow-sm&quot;; badge.innerText = &quot;PASS&quot;; overallStatusCell.innerHTML = &#39;&lt;span class=&quot;text-emerald-600 font-bold&quot;&gt;QUALIFIED&lt;/span&gt;&#39;; } else { badge.className = &quot;px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-red-500 text-white shadow-sm&quot;; badge.innerText = &quot;FAIL&quot;; overallStatusCell.innerHTML = &#39;&lt;span class=&quot;text-red-500 font-bold&quot;&gt;NEEDS IMPROVEMENT&lt;/span&gt;&#39;; }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">resultCard.classList.remove(&quot;hidden&quot;); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Admin Table Render function renderAdminTable(dataToRender = students) { const tbody = document.getElementById(&quot;adminTableBody&quot;); tbody.innerHTML = &quot;&quot;;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span>dataToRender.forEach(raw =&gt; { const res = evaluateStudent(raw); const tr = document.createElement(&quot;tr&quot;); tr.className = &quot;hover:bg-slate-50 transition&quot;; tr.innerHTML = &lt;td class=&quot;py-3 px-4 font-mono font-semibold&quot;&gt;</span><img src="images/image1.png"><span>{res.name}&lt;/td&gt; &lt;td class=&quot;py-3 px-4 text-center&quot;&gt;</span><img src="images/image2.png"><span>{res.thy}&lt;/td&gt; &lt;td class=&quot;py-3 px-4 text-center&quot;&gt;</span><img src="images/image3.png"><span>{res.total}&lt;/td&gt; &lt;td class=&quot;py-3 px-4 text-center&quot;&gt; &lt;span class=&quot;px-2.5 py-0.5 text-xs font-semibold rounded-full ${res.overallPass ? &#39;bg-emerald-100 text-emerald-700&#39; : &#39;bg-red-100 text-red-700&#39;}&quot;&gt; </span><img src="images/image4.png"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">{res.roll}&#39;)&quot; class=&quot;text-xs text-blue-600 hover:underline&quot;&gt;&lt;i class=&quot;fa-solid fa-pen-to-square&quot;&gt;&lt;/i&gt; Edit&lt;/button&gt; &lt;button onclick=&quot;deleteStudent(&#39;${res.roll}&#39;)&quot; class=&quot;text-xs text-red-600 hover:underline&quot;&gt;&lt;i class=&quot;fa-solid fa-trash&quot;&gt;&lt;/i&gt; Delete&lt;/button&gt; &lt;/td&gt;; tbody.appendChild(tr); }); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Admin Filter function filterAdminTable() { const q = document.getElementById(&quot;adminSearch&quot;).value.toLowerCase(); const filtered = students.filter(s =&gt; s.name.toLowerCase().includes(q) || s.roll.toLowerCase().includes(q)); renderAdminTable(filtered); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Modal Operations let editingRoll = null; function openModal(roll = null) { editingRoll = roll; const modal = document.getElementById(&quot;entryModal&quot;); const title = document.getElementById(&quot;modalTitle&quot;);</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">if (roll) { title.innerText = &quot;Edit Student Result&quot;; const target = students.find(s =&gt; s.roll === roll); document.getElementById(&quot;modalRoll&quot;).value = target.roll; document.getElementById(&quot;modalRoll&quot;).disabled = true; document.getElementById(&quot;modalName&quot;).value = target.name; document.getElementById(&quot;modalMCQ&quot;).value = target.mcq; document.getElementById(&quot;modalTHY&quot;).value = target.thy; document.getElementById(&quot;modalIA&quot;).value = target.ia; } else { title.innerText = &quot;Add Student Result&quot;; document.getElementById(&quot;modalRoll&quot;).disabled = false; document.getElementById(&quot;modalRoll&quot;).value = &quot;&quot;; document.getElementById(&quot;modalName&quot;).value = &quot;&quot;; document.getElementById(&quot;modalMCQ&quot;).value = 0; document.getElementById(&quot;modalTHY&quot;).value = 0; document.getElementById(&quot;modalIA&quot;).value = 0; } modal.classList.remove(&quot;hidden&quot;); modal.classList.add(&quot;flex&quot;); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">function closeModal() { const modal = document.getElementById(&quot;entryModal&quot;); modal.classList.add(&quot;hidden&quot;); modal.classList.remove(&quot;flex&quot;); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">function saveStudent(e) { e.preventDefault(); const roll = document.getElementById(&quot;modalRoll&quot;).value.trim(); const name = document.getElementById(&quot;modalName&quot;).value.trim(); const mcq = parseInt(document.getElementById(&quot;modalMCQ&quot;).value) || 0; const thy = parseInt(document.getElementById(&quot;modalTHY&quot;).value) || 0; const ia = parseInt(document.getElementById(&quot;modalIA&quot;).value) || 0;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">if (editingRoll) { const idx = students.findIndex(s =&gt; s.roll === editingRoll); if (idx !== -1) students[idx] = { roll, name, mcq, thy, ia }; } else { if (students.some(s =&gt; s.roll === roll)) { alert(&quot;A student with this Roll Number already exists!&quot;); return; } students.push({ roll, name, mcq, thy, ia }); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">saveData(); renderAdminTable(); closeModal(); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">function editStudent(roll) { openModal(roll); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">function deleteStudent(roll) { if (confirm(Are you sure you want to delete result for Roll ${roll}?)) { students = students.filter(s =&gt; s.roll !== roll); saveData(); renderAdminTable(); } }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">// Bulk CSV Parser function handleBulkCSV(e) { const file = e.target.files[0]; if (!file) return;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">const reader = new FileReader(); reader.onload = function(evt) { const text = evt.target.result; const lines = text.split(&quot;\n&quot;); let count = 0;</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">lines.forEach((line, index) =&gt; { if (index === 0 &amp;&amp; line.toLowerCase().includes(&quot;roll&quot;)) return; // Skip Header const parts = line.split(&quot;,&quot;).map(p =&gt; p.trim()); if (parts.length &gt;= 5) { const [roll, name, mcq, thy, ia] = parts; if (roll &amp;&amp; name) { const existingIdx = students.findIndex(s =&gt; s.roll === roll); const rec = { roll, name, mcq: parseInt(mcq)||0, thy: parseInt(thy)||0, ia: parseInt(ia)||0 }; if (existingIdx !== -1) students[existingIdx] = rec; else students.push(rec); count++; } } });</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">saveData(); renderAdminTable(); alert(Successfully imported/updated ${count} records.); }; reader.readAsText(file); }</span></p><p style="padding:0;margin:0;color:#000000;font-size:11pt;font-family:&quot;Arial&quot;;line-height:1.0;text-align:left"><span style="color:#000000;font-weight:400;text-decoration:none;vertical-align:baseline;font-size:11pt;font-family:&quot;Arial&quot;;font-style:normal">function resetData() { if (confirm(&quot;Reset dataset back to original sample records?&quot;)) { students = [...initialData]; saveData(); renderAdminTable(); } } &lt;/script&gt; &lt;/body&gt; &lt;/html&gt;</span></p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Half Yearly Examination 2026-27 - Social Science Class X</title>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- FontAwesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@media print {
+.no-print { display: none !important; }
+.print-only { display: block !important; }
+body { background: white; color: black; }
+}
+</style>
+</head>
+<body class="bg-slate-100 font-sans min-h-screen text-slate-800 flex flex-col">
+<!-- Header -->
+<header class="bg-slate-900 text-white shadow-md no-print">
+<div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3">
+<i class="fa-solid font-bold text-2xl text-amber-400 fa-graduation-cap"></i>
+<div>
+<h1 class="text-xl font-bold leading-tight">Half Yearly Examination 2026-27</h1>
+<p class="text-xs text-slate-400">Class: X | Subject: Social Science</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button id="navStudentBtn" onclick="switchTab('student')" class="px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition">
+<i class="fa-solid fa-user-graduate mr-1"></i> Student Search
+</button>
+<button id="navAdminBtn" onclick="switchTab('admin')" class="px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition">
+<i class="fa-solid fa-user-shield mr-1"></i> Admin Portal
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
+<!-- STUDENT SEARCH VIEW -->
+<section id="studentView" class="space-y-6">
+<div class="max-w-xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-200 no-print">
+<h2 class="text-xl font-bold text-slate-800 text-center mb-2">Check Your Examination Result</h2>
+<p class="text-xs text-slate-500 text-center mb-6">Enter your Roll Number below to retrieve your detailed marksheet.</p>
+<form onsubmit="handleSearch(event)" class="space-y-4">
+<div>
+<label for="searchRoll" class="block text-xs font-semibold uppercase text-slate-600 mb-1">Roll Number</label>
+<div class="relative">
+<input type="text" id="searchRoll" required placeholder="e.g. 1001" class="w-full pl-10 pr-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none text-slate-800 font-medium transition">
+<i class="fa-solid fa-id-card absolute left-3.5 top-3.5 text-slate-400"></i>
+</div>
+</div>
+<button type="submit" class="w-full bg-slate-900 text-white font-semibold py-3 rounded-xl hover:bg-slate-800 transition shadow flex justify-center items-center gap-2">
+<i class="fa-solid fa-magnifying-glass"></i> View Result
+</button>
+</form>
+</div>
+<!-- Result Card -->
+<div id="resultCard" class="hidden max-w-2xl mx-auto bg-white rounded-2xl shadow-md border border-slate-200 overflow-hidden">
+<!-- Card Header -->
+<div class="bg-slate-900 text-white p-6 border-b border-slate-800 flex justify-between items-start">
+<div>
+<span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/20 text-amber-400 rounded-full inline-block mb-2">Half Yearly Exam 2026-27</span>
+<h3 id="resName" class="text-2xl font-bold uppercase tracking-wide">Candidate Name</h3>
+<p id="resRoll" class="text-sm text-slate-400 font-mono mt-1">Roll No: --</p>
+</div>
+<div class="text-right">
+<span id="resStatusBadge" class="px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-emerald-500 text-white shadow-sm">PASS</span>
+</div>
+</div>
+<!-- Details & Marks -->
+<div class="p-6 space-y-6">
+<div class="grid grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl text-sm border border-slate-100">
+<div>
+<span class="text-slate-500 text-xs block">Class & Section</span>
+<span class="font-semibold text-slate-800">Class X (Social Science)</span>
+</div>
+<div>
+<span class="text-slate-500 text-xs block">Academic Year</span>
+<span class="font-semibold text-slate-800">2026 - 2027</span>
+</div>
+</div>
+<div>
+<h4 class="text-xs font-semibold uppercase text-slate-500 mb-3 tracking-wider">Score Breakdown</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm border-collapse">
+<thead>
+<tr class="border-b border-slate-200 text-slate-500 text-xs">
+<th class="py-2 font-semibold">Assessment</th>
+<th class="py-2 text-center font-semibold">Max Marks</th>
+<th class="py-2 text-center font-semibold">Marks Obtained</th>
+<th class="py-2 text-right font-semibold">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-slate-700">
+<tr>
+<td class="py-3 font-medium">Multiple Choice Questions (MCQ)</td>
+<td class="py-3 text-center">45</td>
+<td id="resMCQ" class="py-3 text-center font-bold">--</td>
+<td id="resMCQStatus" class="py-3 text-right text-xs font-semibold">--</td>
+</tr>
+<tr>
+<td class="py-3 font-medium">Theory Examination (THY)</td>
+<td class="py-3 text-center">45</td>
+<td id="resTHY" class="py-3 text-center font-bold">--</td>
+<td id="resTHYStatus" class="py-3 text-right text-xs font-semibold">--</td>
+</tr>
+<tr>
+<td class="py-3 font-medium">Internal Assessment (IA)</td>
+<td class="py-3 text-center">10</td>
+<td id="resIA" class="py-3 text-center font-bold">--</td>
+<td id="resIAStatus" class="py-3 text-right text-xs font-semibold">--</td>
+</tr>
+<tr class="bg-slate-50 font-bold text-slate-900">
+<td class="py-3 px-2">Grand Total</td>
+<td class="py-3 text-center">100</td>
+<td id="resTotal" class="py-3 text-center text-lg text-indigo-700">--</td>
+<td id="resOverallStatus" class="py-3 text-right text-sm">--</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Rules Notice -->
+<div class="text-xs text-slate-500 bg-amber-50 p-3 rounded-lg border border-amber-200/60">
+<i class="fa-solid fa-triangle-exclamation text-amber-600 mr-1"></i>
+<strong>Passing Criteria:</strong> Candidate must secure non-zero marks in MCQ, THY, and IA individually, and achieve a minimum aggregate total of 30 marks.
+</div>
+<!-- Print Button -->
+<div class="text-right no-print">
+<button onclick="window.print()" class="px-4 py-2 text-sm bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg transition inline-flex items-center gap-2">
+<i class="fa-solid fa-print"></i> Print Marksheet
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ADMIN PORTAL VIEW -->
+<section id="adminView" class="hidden space-y-6">
+<div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+<div>
+<h2 class="text-xl font-bold text-slate-800">Admin Result Management Portal</h2>
+<p class="text-xs text-slate-500">Add, edit, filter, or bulk upload student results.</p>
+</div>
+<div class="flex flex-wrap gap-2">
+<button onclick="openModal()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2">
+<i class="fa-solid fa-plus"></i> Single Entry
+</button>
+<label class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg transition flex items-center gap-2 cursor-pointer">
+<i class="fa-solid fa-file-csv"></i> Bulk CSV Import
+<input type="file" id="csvFileInput" accept=".csv" class="hidden" onchange="handleBulkCSV(event)">
+</label>
+</div>
+</div>
+<!-- Data Table -->
+<div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+<div class="p-4 border-b border-slate-200 flex flex-col sm:flex-row justify-between gap-4">
+<input type="text" id="adminSearch" onkeyup="filterAdminTable()" placeholder="Search student name or roll..." class="px-3 py-2 border border-slate-300 rounded-lg text-sm w-full sm:w-64 outline-none focus:border-amber-500">
+<button onclick="resetData()" class="text-xs text-red-500 hover:underline">Reset to Default Data</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="bg-slate-50 text-slate-500 text-xs uppercase border-b border-slate-200">
+<tr>
+<th class="py-3 px-4 font-semibold">Roll No</th>
+<th class="py-3 px-4 font-semibold">Student Name</th>
+<th class="py-3 px-4 font-semibold text-center">MCQ (45)</th>
+<th class="py-3 px-4 font-semibold text-center">THY (45)</th>
+<th class="py-3 px-4 font-semibold text-center">IA (10)</th>
+<th class="py-3 px-4 font-semibold text-center">Total (100)</th>
+<th class="py-3 px-4 font-semibold text-center">Result</th>
+<th class="py-3 px-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody id="adminTableBody" class="divide-y divide-slate-100">
+<!-- Dynamic Rows inserted via JS -->
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<!-- MODAL FOR SINGLE ENTRY / EDIT -->
+<div id="entryModal" class="fixed inset-0 bg-slate-900/50 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+<div class="bg-white w-full max-w-md rounded-2xl shadow-xl overflow-hidden">
+<div class="bg-slate-900 text-white p-4 flex justify-between items-center">
+<h3 id="modalTitle" class="font-bold text-lg">Add Student Result</h3>
+<button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+</div>
+<form onsubmit="saveStudent(event)" class="p-6 space-y-4">
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Roll Number</label>
+<input type="text" id="modalRoll" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-1">Candidate Name</label>
+<input type="text" id="modalName" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+</div>
+<div class="grid grid-cols-3 gap-3">
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-1">MCQ (Max 45)</label>
+<input type="number" id="modalMCQ" min="0" max="45" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-1">THY (Max 45)</label>
+<input type="number" id="modalTHY" min="0" max="45" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+</div>
+<div>
+<label class="block text-xs font-semibold text-slate-600 uppercase mb-1">IA (Max 10)</label>
+<input type="number" id="modalIA" min="0" max="10" required class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm outline-none focus:border-amber-500">
+</div>
+</div>
+<div class="pt-4 flex justify-end gap-2">
+<button type="button" onclick="closeModal()" class="px-4 py-2 text-sm text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+<button type="submit" class="px-4 py-2 text-sm bg-amber-500 text-slate-950 font-semibold rounded-lg hover:bg-amber-400">Save Record</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+// Initial Sample Dataset
+const initialData = [
+{ roll: "1001", name: "Ankur Das", mcq: 40, thy: 38, ia: 9 },
+{ roll: "1002", name: "Bishal Sharma", mcq: 25, thy: 20, ia: 7 },
+{ roll: "1003", name: "Dipika Saikia", mcq: 12, thy: 10, ia: 5 },
+{ roll: "1004", name: "Rahul Bora", mcq: 0, thy: 25, ia: 8 }
+];
+// Load from LocalStorage or initialize
+let students = JSON.parse(localStorage.getItem("halfYearlyResults")) || initialData;
+function saveData() {
+localStorage.setItem("halfYearlyResults", JSON.stringify(students));
+}
+// Evaluation Logic
+function evaluateStudent(s) {
+const mcqPass = s.mcq > 0;
+const thyPass = s.thy > 0;
+const iaPass = s.ia > 0;
+const total = s.mcq + s.thy + s.ia;
+const aggregatePass = total >= 30;
+const overallPass = mcqPass && thyPass && iaPass && aggregatePass;
+return {
+...s,
+total,
+mcqPass,
+thyPass,
+iaPass,
+aggregatePass,
+overallPass
+};
+}
+// Navigation Switcher
+function switchTab(tab) {
+const studentView = document.getElementById("studentView");
+const adminView = document.getElementById("adminView");
+const navStudentBtn = document.getElementById("navStudentBtn");
+const navAdminBtn = document.getElementById("navAdminBtn");
+if (tab === "student") {
+studentView.classList.remove("hidden");
+adminView.classList.add("hidden");
+navStudentBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition";
+navAdminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition";
+} else {
+studentView.classList.add("hidden");
+adminView.classList.remove("hidden");
+navAdminBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-amber-500 text-slate-950 shadow hover:bg-amber-400 transition";
+navStudentBtn.className = "px-4 py-2 text-sm font-semibold rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white transition";
+renderAdminTable();
+}
+}
+// Student Search Handler
+function handleSearch(e) {
+e.preventDefault();
+const rollInput = document.getElementById("searchRoll").value.trim();
+const rawStudent = students.find(s => s.roll.toLowerCase() === rollInput.toLowerCase());
+const resultCard = document.getElementById("resultCard");
+if (!rawStudent) {
+alert("No candidate record found for Roll No: " + rollInput);
+resultCard.classList.add("hidden");
+return;
+}
+const res = evaluateStudent(rawStudent);
+document.getElementById("resName").innerText = res.name;
+document.getElementById("resRoll").innerText = "Roll No: " + res.roll;
+document.getElementById("resMCQ").innerText = res.mcq;
+document.getElementById("resTHY").innerText = res.thy;
+document.getElementById("resIA").innerText = res.ia;
+document.getElementById("resTotal").innerText = res.total;
+// Section Statuses
+document.getElementById("resMCQStatus").innerHTML = res.mcqPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>';
+document.getElementById("resTHYStatus").innerHTML = res.thyPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>';
+document.getElementById("resIAStatus").innerHTML = res.iaPass ? '<span class="text-emerald-600">PASSED</span>' : '<span class="text-red-500">FAILED</span>';
+const badge = document.getElementById("resStatusBadge");
+const overallStatusCell = document.getElementById("resOverallStatus");
+if (res.overallPass) {
+badge.className = "px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-emerald-500 text-white shadow-sm";
+badge.innerText = "PASS";
+overallStatusCell.innerHTML = '<span class="text-emerald-600 font-bold">QUALIFIED</span>';
+} else {
+badge.className = "px-3 py-1 text-xs font-extrabold uppercase rounded-full bg-red-500 text-white shadow-sm";
+badge.innerText = "FAIL";
+overallStatusCell.innerHTML = '<span class="text-red-500 font-bold">NEEDS IMPROVEMENT</span>';
+}
+resultCard.classList.remove("hidden");
+}
+// Admin Table Render
+function renderAdminTable(dataToRender = students) {
+const tbody = document.getElementById("adminTableBody");
+tbody.innerHTML = "";
+dataToRender.forEach(raw => {
+const res = evaluateStudent(raw);
+const tr = document.createElement("tr");
+tr.className = "hover:bg-slate-50 transition";
+tr.innerHTML = <td class="py-3 px-4 font-mono font-semibold">${res.roll}</td> <td class="py-3 px-4 font-medium">${res.name}</td> <td class="py-3 px-4 text-center">${res.mcq}</td> <td class="py-3 px-4 text-center">${res.thy}</td> <td class="py-3 px-4 text-center">${res.ia}</td> <td class="py-3 px-4 text-center font-bold text-indigo-700">${res.total}</td> <td class="py-3 px-4 text-center"> <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full ${res.overallPass ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}"> ${res.overallPass ? 'PASS' : 'FAIL'} </span> </td> <td class="py-3 px-4 text-right space-x-2"> <button onclick="editStudent('${res.roll}')" class="text-xs text-blue-600 hover:underline"><i class="fa-solid fa-pen-to-square"></i> Edit</button> <button onclick="deleteStudent('${res.roll}')" class="text-xs text-red-600 hover:underline"><i class="fa-solid fa-trash"></i> Delete</button> </td>;
+tbody.appendChild(tr);
+});
+}
+// Admin Filter
+function filterAdminTable() {
+const q = document.getElementById("adminSearch").value.toLowerCase();
+const filtered = students.filter(s => s.name.toLowerCase().includes(q) || s.roll.toLowerCase().includes(q));
+renderAdminTable(filtered);
+}
+// Modal Operations
+let editingRoll = null;
+function openModal(roll = null) {
+editingRoll = roll;
+const modal = document.getElementById("entryModal");
+const title = document.getElementById("modalTitle");
+if (roll) {
+title.innerText = "Edit Student Result";
+const target = students.find(s => s.roll === roll);
+document.getElementById("modalRoll").value = target.roll;
+document.getElementById("modalRoll").disabled = true;
+document.getElementById("modalName").value = target.name;
+document.getElementById("modalMCQ").value = target.mcq;
+document.getElementById("modalTHY").value = target.thy;
+document.getElementById("modalIA").value = target.ia;
+} else {
+title.innerText = "Add Student Result";
+document.getElementById("modalRoll").disabled = false;
+document.getElementById("modalRoll").value = "";
+document.getElementById("modalName").value = "";
+document.getElementById("modalMCQ").value = 0;
+document.getElementById("modalTHY").value = 0;
+document.getElementById("modalIA").value = 0;
+}
+modal.classList.remove("hidden");
+modal.classList.add("flex");
+}
+function closeModal() {
+const modal = document.getElementById("entryModal");
+modal.classList.add("hidden");
+modal.classList.remove("flex");
+}
+function saveStudent(e) {
+e.preventDefault();
+const roll = document.getElementById("modalRoll").value.trim();
+const name = document.getElementById("modalName").value.trim();
+const mcq = parseInt(document.getElementById("modalMCQ").value) || 0;
+const thy = parseInt(document.getElementById("modalTHY").value) || 0;
+const ia = parseInt(document.getElementById("modalIA").value) || 0;
+if (editingRoll) {
+const idx = students.findIndex(s => s.roll === editingRoll);
+if (idx !== -1) students[idx] = { roll, name, mcq, thy, ia };
+} else {
+if (students.some(s => s.roll === roll)) {
+alert("A student with this Roll Number already exists!");
+return;
+}
+students.push({ roll, name, mcq, thy, ia });
+}
+saveData();
+renderAdminTable();
+closeModal();
+}
+function editStudent(roll) {
+openModal(roll);
+}
+function deleteStudent(roll) {
+if (confirm(Are you sure you want to delete result for Roll ${roll}?)) {
+students = students.filter(s => s.roll !== roll);
+saveData();
+renderAdminTable();
+}
+}
+// Bulk CSV Parser
+function handleBulkCSV(e) {
+const file = e.target.files[0];
+if (!file) return;
+const reader = new FileReader();
+reader.onload = function(evt) {
+const text = evt.target.result;
+const lines = text.split("\n");
+let count = 0;
+lines.forEach((line, index) => {
+if (index === 0 && line.toLowerCase().includes("roll")) return; // Skip Header
+const parts = line.split(",").map(p => p.trim());
+if (parts.length >= 5) {
+const [roll, name, mcq, thy, ia] = parts;
+if (roll && name) {
+const existingIdx = students.findIndex(s => s.roll === roll);
+const rec = { roll, name, mcq: parseInt(mcq)||0, thy: parseInt(thy)||0, ia: parseInt(ia)||0 };
+if (existingIdx !== -1) students[existingIdx] = rec;
+else students.push(rec);
+count++;
+}
+}
+});
+saveData();
+renderAdminTable();
+alert(Successfully imported/updated ${count} records.);
+};
+reader.readAsText(file);
+}
+function resetData() {
+if (confirm("Reset dataset back to original sample records?")) {
+students = [...initialData];
+saveData();
+renderAdminTable();
+}
+}
+</script>
+</body>
+</html>
