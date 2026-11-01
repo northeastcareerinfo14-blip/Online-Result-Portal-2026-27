@@ -322,6 +322,35 @@
       resultCard.classList.remove("hidden");
     }
 
+    function renderAdminTable(dataToRender = students) {
+      const tbody = document.getElementById("adminTableBody");
+      tbody.innerHTML = "";
+
+      dataToRender.forEach(raw => {
+        const res = evaluateStudent(raw);
+        const tr = document.createElement("tr");
+        tr.className = "hover:bg-slate-50 transition";
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-mono font-semibold">${res.roll}</td>
+          <td class="py-3 px-4 font-medium">${res.name}</td>
+          <td class="py-3 px-4 text-center">${res.mcq}</td>
+          <td class="py-3 px-4 text-center">${res.thy}</td>
+          <td class="py-3 px-4 text-center">${res.ia}</td>
+          <td class="py-3 px-4 text-center font-bold text-indigo-700">${res.total}</td>
+          <td class="py-3 px-4 text-center">
+            <span class="px-2.5 py-0.5 text-xs font-semibold rounded-full ${res.overallPass ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}">
+              ${res.overallPass ? 'PASS' : 'FAIL'}
+            </span>
+          </td>
+          <td class="py-3 px-4 text-right space-x-2">
+            <button onclick="editStudent('${res.roll}')" class="text-xs text-blue-600 hover:underline"><i class="fa-solid fa-pen-to-square"></i> Edit</button>
+            <button onclick="deleteStudent('${res.roll}')" class="text-xs text-red-600 hover:underline"><i class="fa-solid fa-trash"></i> Delete</button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
     function filterAdminTable() {
       const q = document.getElementById("adminSearch").value.toLowerCase();
       const filtered = students.filter(s => s.name.toLowerCase().includes(q) || s.roll.toLowerCase().includes(q));
@@ -370,22 +399,13 @@
       const thy = parseInt(document.getElementById("modalTHY").value) || 0;
       const ia = parseInt(document.getElementById("modalIA").value) || 0;
 
-      const existing = students.find(s => s.roll === roll);
-
-if (existing && !editingRoll) {
-    editingRoll = roll;
-
-    document.getElementById("modalName").value = existing.name;
-    document.getElementById("modalMCQ").value = existing.mcq;
-    document.getElementById("modalTHY").value = existing.thy;
-    document.getElementById("modalIA").value = existing.ia;
-
-    document.getElementById("modalRoll").disabled = true;
-    document.getElementById("modalTitle").innerText = "Edit Student Result";
-
-    alert("This Roll Number already exists. You can now update the marks.");
-    return;
-}
+      if (editingRoll) {
+        const idx = students.findIndex(s => s.roll === editingRoll);
+        if (idx !== -1) students[idx] = { roll, name, mcq, thy, ia };
+      } else {
+        if (students.some(s => s.roll === roll)) {
+          alert("A student with this Roll Number already exists!");
+          return;
         }
         students.push({ roll, name, mcq, thy, ia });
       }
