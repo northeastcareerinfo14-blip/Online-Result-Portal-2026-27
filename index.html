@@ -370,13 +370,22 @@
       const thy = parseInt(document.getElementById("modalTHY").value) || 0;
       const ia = parseInt(document.getElementById("modalIA").value) || 0;
 
-      if (editingRoll) {
-        const idx = students.findIndex(s => s.roll === editingRoll);
-        if (idx !== -1) students[idx] = { roll, name, mcq, thy, ia };
-      } else {
-        if (students.some(s => s.roll === roll)) {
-          alert("A student with this Roll Number already exists!");
-          return;
+      const existing = students.find(s => s.roll === roll);
+
+if (existing && !editingRoll) {
+    editingRoll = roll;
+
+    document.getElementById("modalName").value = existing.name;
+    document.getElementById("modalMCQ").value = existing.mcq;
+    document.getElementById("modalTHY").value = existing.thy;
+    document.getElementById("modalIA").value = existing.ia;
+
+    document.getElementById("modalRoll").disabled = true;
+    document.getElementById("modalTitle").innerText = "Edit Student Result";
+
+    alert("This Roll Number already exists. You can now update the marks.");
+    return;
+}
         }
         students.push({ roll, name, mcq, thy, ia });
       }
